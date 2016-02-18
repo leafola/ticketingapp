@@ -17,9 +17,7 @@ import org.springframework.web.servlet.ModelAndView;
 
 /**
  * This controller routes accesses to the application to the appropriate
- * hanlder methods. 
- * @author www.codejava.net
- *
+ * handler methods. 
  */
 @Controller
 public class HomeController {
