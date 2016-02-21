@@ -23,7 +23,8 @@ public class UsersDAOImpl implements UsersDAO {
 		// insert
 		String sql = "INSERT INTO users (username, password, enabled)" + " VALUES (?, ?, ?)";
 		jdbcTemplate.update(sql, user.getUsername(), user.getPassword(), user.getEnabled());
-
+		sql = "INSERT INTO user_roles (username,role)" + "VALUES (?, ?)";
+		jdbcTemplate.update(sql, user.getUsername(), "ROLE_USER");
 	}
 
 	/*@Override

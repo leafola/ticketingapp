@@ -2,7 +2,6 @@ package ie.kevinmay.controller;
 
 
 import ie.kevinmay.dao.UsersDAO;
-import ie.kevinmay.model.Contact;
 import ie.kevinmay.model.Users;
 
 import org.springframework.beans.factory.annotation.Autowired;
