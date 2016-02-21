@@ -10,6 +10,7 @@
 </head>
 <body>
 	<div align="center">
+	<c:if test="${pageContext.request.userPrincipal.name != null}"> 
 		<h1>List Tickets</h1>
 		<table border="1">
 			<tr>
@@ -24,6 +25,7 @@
 				</tr>
 			</c:forEach>
 		</table>
+		</c:if>
 	</div>
 </body>
 </html>

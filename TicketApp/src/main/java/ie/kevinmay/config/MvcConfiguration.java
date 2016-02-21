@@ -6,6 +6,8 @@ import ie.kevinmay.dao.ContactDAO;
 import ie.kevinmay.dao.ContactDAOImpl;
 import ie.kevinmay.dao.TicketDAO;
 import ie.kevinmay.dao.TicketDAOImpl;
+import ie.kevinmay.dao.UsersDAO;
+import ie.kevinmay.dao.UsersDAOImpl;
 
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.ComponentScan;
@@ -15,7 +17,6 @@ import org.springframework.jdbc.datasource.DriverManagerDataSource;
 import org.springframework.web.servlet.ViewResolver;
 import org.springframework.web.servlet.config.annotation.EnableWebMvc;
 import org.springframework.web.servlet.config.annotation.ResourceHandlerRegistry;
-import org.springframework.web.servlet.config.annotation.ViewControllerRegistry;
 import org.springframework.web.servlet.config.annotation.WebMvcConfigurerAdapter;
 import org.springframework.web.servlet.view.InternalResourceViewResolver;
 
@@ -58,5 +59,10 @@ public class MvcConfiguration extends WebMvcConfigurerAdapter {
 	@Bean
 	public TicketDAO getTicketDAO() {
 		return new TicketDAOImpl(getDataSource());
+	}
+	
+	@Bean
+	public UsersDAO getUsersDAO() {
+		return new UsersDAOImpl(getDataSource());
 	}
 }
