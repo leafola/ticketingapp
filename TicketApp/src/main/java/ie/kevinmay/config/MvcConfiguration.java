@@ -10,6 +10,7 @@ import ie.kevinmay.dao.TicketDAOImpl;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.ComponentScan;
 import org.springframework.context.annotation.Configuration;
+import org.springframework.context.annotation.Import;
 import org.springframework.jdbc.datasource.DriverManagerDataSource;
 import org.springframework.web.servlet.ViewResolver;
 import org.springframework.web.servlet.config.annotation.EnableWebMvc;
@@ -19,24 +20,20 @@ import org.springframework.web.servlet.config.annotation.WebMvcConfigurerAdapter
 import org.springframework.web.servlet.view.InternalResourceViewResolver;
 
 @Configuration
-@ComponentScan(basePackages="ie.kevinmay")
+@ComponentScan(basePackages = "ie.kevinmay")
 @EnableWebMvc
-public class MvcConfiguration extends WebMvcConfigurerAdapter{
-	
-	 @Override
-	    public void addViewControllers(ViewControllerRegistry registry) {
-	        registry.addViewController("/hello").setViewName("hello");
-	        registry.addViewController("/login").setViewName("login");
-	    }
+@Import({ WebSecurityConfig.class })
+public class MvcConfiguration extends WebMvcConfigurerAdapter {
+
 
 	@Bean
-	public ViewResolver getViewResolver(){
+	public ViewResolver getViewResolver() {
 		InternalResourceViewResolver resolver = new InternalResourceViewResolver();
 		resolver.setPrefix("/WEB-INF/views/");
 		resolver.setSuffix(".jsp");
 		return resolver;
 	}
-	
+
 	@Override
 	public void addResourceHandlers(ResourceHandlerRegistry registry) {
 		registry.addResourceHandler("/resources/**").addResourceLocations("/resources/");
@@ -46,18 +43,18 @@ public class MvcConfiguration extends WebMvcConfigurerAdapter{
 	public DataSource getDataSource() {
 		DriverManagerDataSource dataSource = new DriverManagerDataSource();
 		dataSource.setDriverClassName("com.mysql.jdbc.Driver");
-		dataSource.setUrl("jdbc:mysql://localhost:3306/ticket_app_database");
+		dataSource.setUrl("jdbc:mysql://localhost:3306/demo");
 		dataSource.setUsername("root");
 		dataSource.setPassword("password");
-		
+
 		return dataSource;
 	}
-	
+
 	@Bean
 	public ContactDAO getContactDAO() {
 		return new ContactDAOImpl(getDataSource());
 	}
-	
+
 	@Bean
 	public TicketDAO getTicketDAO() {
 		return new TicketDAOImpl(getDataSource());
