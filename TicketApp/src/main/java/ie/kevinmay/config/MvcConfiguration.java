@@ -14,6 +14,7 @@ import org.springframework.jdbc.datasource.DriverManagerDataSource;
 import org.springframework.web.servlet.ViewResolver;
 import org.springframework.web.servlet.config.annotation.EnableWebMvc;
 import org.springframework.web.servlet.config.annotation.ResourceHandlerRegistry;
+import org.springframework.web.servlet.config.annotation.ViewControllerRegistry;
 import org.springframework.web.servlet.config.annotation.WebMvcConfigurerAdapter;
 import org.springframework.web.servlet.view.InternalResourceViewResolver;
 
@@ -21,6 +22,12 @@ import org.springframework.web.servlet.view.InternalResourceViewResolver;
 @ComponentScan(basePackages="ie.kevinmay")
 @EnableWebMvc
 public class MvcConfiguration extends WebMvcConfigurerAdapter{
+	
+	 @Override
+	    public void addViewControllers(ViewControllerRegistry registry) {
+	        registry.addViewController("/hello").setViewName("hello");
+	        registry.addViewController("/login").setViewName("login");
+	    }
 
 	@Bean
 	public ViewResolver getViewResolver(){
@@ -39,7 +46,7 @@ public class MvcConfiguration extends WebMvcConfigurerAdapter{
 	public DataSource getDataSource() {
 		DriverManagerDataSource dataSource = new DriverManagerDataSource();
 		dataSource.setDriverClassName("com.mysql.jdbc.Driver");
-		dataSource.setUrl("jdbc:mysql://localhost:3306/demo");
+		dataSource.setUrl("jdbc:mysql://localhost:3306/ticket_app_database");
 		dataSource.setUsername("root");
 		dataSource.setPassword("password");
 		
