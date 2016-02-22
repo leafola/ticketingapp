@@ -39,9 +39,9 @@ public class HomeController {
 	public ModelAndView welcomePage() {
 
 		ModelAndView model = new ModelAndView();
-		model.addObject("title", "Spring Security Hello World");
+		model.addObject("title", "Ticketing App");
 		model.addObject("message", "This is welcome page!");
-		model.setViewName("hello");
+		model.setViewName("welcome");
 		return model;
 
 	}
