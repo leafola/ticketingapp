@@ -8,12 +8,17 @@ import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
 import org.springframework.security.config.annotation.web.configuration.WebSecurityConfigurerAdapter;
 
+import ie.kevinmay.config.handler.MySuccessHandler;
+
 @Configuration
 @EnableWebSecurity
 public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
 
 	@Autowired
 	DataSource dataSource;
+	
+	@Autowired
+	MySuccessHandler mySuccessHandler;
 	
 	@Autowired
 	public void configAuthentication(AuthenticationManagerBuilder auth) throws Exception {
@@ -33,7 +38,9 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
 		.antMatchers("/admin/**").access("hasRole('ROLE_USER')")
 		.and()
 		.formLogin().loginPage("/login")
-		.usernameParameter("username").passwordParameter("password");
+		.usernameParameter("username")
+		.passwordParameter("password")
+		.successHandler(mySuccessHandler);
 		
 	}
 	

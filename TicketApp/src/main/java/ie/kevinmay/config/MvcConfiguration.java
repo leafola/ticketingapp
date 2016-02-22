@@ -2,6 +2,7 @@ package ie.kevinmay.config;
 
 import javax.sql.DataSource;
 
+import ie.kevinmay.config.handler.MySuccessHandler;
 import ie.kevinmay.dao.ContactDAO;
 import ie.kevinmay.dao.ContactDAOImpl;
 import ie.kevinmay.dao.TicketDAO;
@@ -64,5 +65,10 @@ public class MvcConfiguration extends WebMvcConfigurerAdapter {
 	@Bean
 	public UsersDAO getUsersDAO() {
 		return new UsersDAOImpl(getDataSource());
+	}
+	
+	@Bean
+	public MySuccessHandler getSuccessHandler() {
+		return new MySuccessHandler();
 	}
 }
