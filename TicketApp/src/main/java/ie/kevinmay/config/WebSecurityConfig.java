@@ -34,11 +34,15 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
 
 	  http.authorizeRequests()
 	  .antMatchers("/list_tickets/**").access("hasRole('ROLE_USER')")
-		.antMatchers("/admin/**").access("hasRole('ROLE_USER')")
+		.antMatchers("/admin/**").access("hasRole('ROLE_ADMIN')")
+		.and()
+		.authorizeRequests()
+		.anyRequest().authenticated()
 		.and()
 		.formLogin().loginPage("/login")
 		.usernameParameter("username")
 		.passwordParameter("password")
+		.permitAll()
 		.successHandler(mySuccessHandler)
 		.and()
 		.logout().logoutSuccessUrl("/login?logout");
