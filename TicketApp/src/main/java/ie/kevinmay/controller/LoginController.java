@@ -40,8 +40,8 @@ public class LoginController {
 	public ModelAndView welcomePage() {
 
 		ModelAndView model = new ModelAndView();
-		model.addObject("title", "Spring Security Hello World");
-		model.addObject("message", "This is welcome page!");
+		model.addObject("title", "Login to Ticketing App");
+		model.addObject("message", "Login Page for Ticketing App");
 		model.setViewName("login");
 		return model;
 

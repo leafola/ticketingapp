@@ -43,7 +43,6 @@ public class HomeController {
 		model.addObject("message", "This is welcome page!");
 		model.setViewName("welcome");
 		return model;
-
 	}
 
 	@RequestMapping(value = "/admin**", method = RequestMethod.GET)

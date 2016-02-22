@@ -16,12 +16,18 @@
 			<tr>
 				<th>No</th>
 				<th>Title</th>
+				<th>Actions</th>
 			</tr>
 
 			<c:forEach var="ticket" items="${listTicket}" varStatus="status">
 				<tr>
 					<td>${status.index + 1}</td>
 					<td>${ticket.title}</td>
+					<td>
+						<a href="editTicket?id=${contact.id}">Edit</a>
+						<a href="deleteTicket?id=${contact.id}">Delete</a>
+						<a href="viewTicketPosts?id=${contact.id}">View</a>
+					</td>
 				</tr>
 			</c:forEach>
 		</table>
