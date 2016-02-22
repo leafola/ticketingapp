@@ -40,7 +40,7 @@ public class MvcConfiguration extends WebMvcConfigurerAdapter {
 		registry.addResourceHandler("/resources/**").addResourceLocations("/resources/");
 	}
 
-	@Bean
+	@Bean(name="dataSource")
 	public DataSource getDataSource() {
 		DriverManagerDataSource dataSource = new DriverManagerDataSource();
 		dataSource.setDriverClassName("com.mysql.jdbc.Driver");

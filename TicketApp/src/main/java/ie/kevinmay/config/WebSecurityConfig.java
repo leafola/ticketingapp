@@ -31,7 +31,9 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
 	  http.authorizeRequests()
 	  .antMatchers("/list_tickets/**").access("hasRole('ROLE_USER')")
 		.antMatchers("/admin/**").access("hasRole('ROLE_USER')")
-		.and().formLogin();
+		.and()
+		.formLogin().loginPage("/login")
+		.usernameParameter("username").passwordParameter("password");
 		
 	}
 	
