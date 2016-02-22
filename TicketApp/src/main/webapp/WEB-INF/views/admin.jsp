@@ -6,8 +6,11 @@
 	<h1>Message : ${message}</h1>
 
 	<c:if test="${pageContext.request.userPrincipal.name != null}">
-		<h2>Welcome : ${pageContext.request.userPrincipal.name} 
-                 | <a href="<c:url value="/logout" />" > Logout</a></h2>  
+		<h2>Welcome : ${pageContext.request.userPrincipal.name} |</h2>
+		<form action="/logout" method="post">
+			<input type="submit" value="Sign Out" />
+			<input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}" />
+		</form>
 	</c:if>
 </body>
 </html>
