@@ -12,6 +12,7 @@
 	<div align="center">
 	<c:if test="${pageContext.request.userPrincipal.name != null}"> 
 		<h1>List Tickets</h1>
+		<h3><a href="newTicket">Create New Ticket</a></h3>
 		<table border="1">
 			<tr>
 				<th>No</th>
@@ -24,9 +25,7 @@
 					<td>${status.index + 1}</td>
 					<td>${ticket.title}</td>
 					<td>
-						<a href="editTicket?id=${contact.id}">Edit</a>
-						<a href="deleteTicket?id=${contact.id}">Delete</a>
-						<a href="viewTicketPosts?id=${contact.id}">View</a>
+						<a href="deleteTicket?id=${ticket.id}">Delete</a>
 					</td>
 				</tr>
 			</c:forEach>

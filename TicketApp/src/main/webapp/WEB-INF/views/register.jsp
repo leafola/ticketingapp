@@ -25,6 +25,9 @@
 				<form:hidden path="enabled" value="1"/>
 			</tr>
 			<tr>
+				<form:hidden path="roles" value="ROLE_USER"/>
+			</tr>
+			<tr>
 				<td colspan="2" align="center"><input type="submit" value="Save"></td>
 			</tr>
 		</table>

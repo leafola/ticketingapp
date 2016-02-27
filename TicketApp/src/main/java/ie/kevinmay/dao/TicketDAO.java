@@ -10,4 +10,8 @@ import ie.kevinmay.model.Ticket;
 public interface TicketDAO {
 	
 	public List<Ticket> list();
+
+	public List<Ticket> list(String username);
+
+	public void saveTicket(Ticket ticket);
 }

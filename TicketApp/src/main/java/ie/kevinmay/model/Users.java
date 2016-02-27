@@ -5,6 +5,7 @@ public class Users {
 	private String username;
 	private String password;
 	private int enabled;
+	public String roles;
 
 	public Users(String username, String password, int enabled) {
 		super();
@@ -39,6 +40,14 @@ public class Users {
 
 	public void setEnabled(int enabled) {
 		this.enabled = enabled;
+	}
+	
+	public String getRoles(){
+		return roles;
+	}
+	
+	public void setRoles(String roles){
+		this.roles = roles;
 	}
 
 }

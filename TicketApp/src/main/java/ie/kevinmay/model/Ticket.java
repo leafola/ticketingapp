@@ -3,6 +3,7 @@ package ie.kevinmay.model;
 public class Ticket {
 	private int id;
 	private String title;
+	private String  customer;
 
 	public Ticket() {
 	}
@@ -25,6 +26,13 @@ public class Ticket {
 
 	public void setTitle(String title) {
 		this.title = title;
+	}
+	
+	public void setCustomer(String customer){
+		this.customer = customer;
+	}
+	public String getCustomer() {
+		return customer;
 	}
 
 }
