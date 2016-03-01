@@ -1,5 +1,6 @@
 package ie.kevinmay.ticketingapp.service;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import javax.ws.rs.Consumes;
@@ -22,9 +23,8 @@ public class TicketServiceImpl implements TicketService {
 	private TicketDAO ticketDAO;
 
 	@GET
-	@Path("getall")
-	@Consumes(MediaType.APPLICATION_FORM_URLENCODED)
-	@Produces({MediaType.APPLICATION_JSON/*, MediaType.APPLICATION_XML*/})
+	@Path("/getall")
+	@Produces({MediaType.APPLICATION_JSON})
 	public List<Ticket> getAllTickets() {
 		List<Ticket> listTicket = ticketDAO.list();
 

@@ -1,13 +1,13 @@
 <project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-  xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
-  <modelVersion>4.0.0</modelVersion>
-  <groupId>ie.kevinmay</groupId>
-  <artifactId>TicketingApp</artifactId>
-  <packaging>war</packaging>
-  <version>0.0.1-SNAPSHOT</version>
-  <name>TicketingApp Maven Webapp</name>
-  <url>http://maven.apache.org</url>
- <!-- Jersey repository -->
+	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
+	<modelVersion>4.0.0</modelVersion>
+	<groupId>ie.kevinmay</groupId>
+	<artifactId>TicketingApp</artifactId>
+	<packaging>war</packaging>
+	<version>0.0.1-SNAPSHOT</version>
+	<name>TicketingApp Maven Webapp</name>
+	<url>http://maven.apache.org</url>
+	<!-- Jersey repository -->
 	<repositories>
 		<repository>
 			<id>snapshot-repository.java.net</id>
@@ -55,36 +55,6 @@
 			</plugin>
 
 			<!-- JAXB plugin to generate-sources from XSD -->
-			<plugin>
-				<groupId>org.codehaus.mojo</groupId>
-				<artifactId>jaxb2-maven-plugin</artifactId>
-				<version>1.6</version>
-				<executions>
-					<execution>
-						<goals>
-							<goal>xjc</goal><!-- xjc/generate -->
-						</goals>
-						<configuration>
-							<outputDirectory>${basedir}/generated/java/source
-							</outputDirectory>
-							<schemaDirectory>${basedir}/src/main/resources/com/jersey/series/spring/hibernate/service/entities</schemaDirectory>
-							<schemaFiles>*.xsd</schemaFiles>
-							<schemaLanguage>XMLSCHEMA</schemaLanguage>
-							<extension>true</extension>
-							<args>
-								<arg>-XtoString</arg>
-							</args>
-							<plugins>
-								<plugin>
-									<groupId>org.jvnet.jaxb2_commons</groupId>
-									<artifactId>jaxb2-basics</artifactId>
-									<version>0.6.4</version>
-								</plugin>
-							</plugins>
-						</configuration>
-					</execution>
-				</executions>
-			</plugin>
 		</plugins>
 	</build>
 
@@ -103,6 +73,12 @@
 			<artifactId>jersey-media-json-jackson</artifactId>
 			<version>${jersey.version}</version>
 			<scope>${jersey.scope}</scope>
+		</dependency>
+
+		<dependency>
+			<groupId>com.sun.jersey</groupId>
+			<artifactId>jersey-json</artifactId>
+			<version>1.8</version>
 		</dependency>
 
 		<!-- Jersey extension module providing support for Spring 3 integration -->
@@ -149,6 +125,20 @@
 			<groupId>org.hibernate</groupId>
 			<artifactId>hibernate-ehcache</artifactId>
 			<version>${hibernate.version}</version>
+		</dependency>
+
+		<dependency>
+			<groupId>javax.servlet</groupId>
+			<artifactId>javax.servlet-api</artifactId>
+			<version>3.1.0</version>
+			<scope>provided</scope>
+		</dependency>
+
+		<dependency>
+			<groupId>javax.servlet.jsp</groupId>
+			<artifactId>javax.servlet.jsp-api</artifactId>
+			<version>2.3.1</version>
+			<scope>provided</scope>
 		</dependency>
 
 		<!-- MySql-Connector -->
