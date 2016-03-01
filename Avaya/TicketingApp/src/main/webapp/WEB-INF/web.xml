@@ -9,6 +9,17 @@
 	<listener>
 		<listener-class>org.springframework.web.context.ContextLoaderListener</listener-class>
 	</listener>
+	
+	<!-- Spring Dispatcher Servlet -->
+	<servlet>
+        <servlet-name>spring-dispatcher</servlet-name>
+        <servlet-class>org.springframework.web.servlet.DispatcherServlet</servlet-class>
+        <load-on-startup>1</load-on-startup>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>spring-dispatcher</servlet-name>
+        <url-pattern>/web/*</url-pattern>
+    </servlet-mapping>
 
 	<!-- Jersey Servlet -->
 	<servlet>
