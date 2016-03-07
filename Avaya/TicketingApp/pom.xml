@@ -62,6 +62,7 @@
 	</build>
 
 	<dependencies>
+	
 		<!-- Jersey core Servlet 2.x implementation -->
 		<dependency>
 			<groupId>org.glassfish.jersey.containers</groupId>
