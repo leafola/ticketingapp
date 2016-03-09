@@ -62,7 +62,7 @@
 	</build>
 
 	<dependencies>
-	
+
 		<!-- Jersey core Servlet 2.x implementation -->
 		<dependency>
 			<groupId>org.glassfish.jersey.containers</groupId>
@@ -124,6 +124,17 @@
 			<artifactId>hibernate-ehcache</artifactId>
 			<version>${hibernate.version}</version>
 		</dependency>
+		<dependency>
+			<groupId>org.hibernate</groupId>
+			<artifactId>hibernate-entitymanager</artifactId>
+			<version>4.3.6.Final</version>
+		</dependency>
+
+		<dependency>
+			<groupId>org.apache.tomcat</groupId>
+			<artifactId>tomcat-dbcp</artifactId>
+			<version>7.0.55</version>
+		</dependency>
 
 		<!-- Servlet Spec -->
 		<dependency>
@@ -139,14 +150,14 @@
 			<version>2.3.1</version>
 			<scope>provided</scope>
 		</dependency>
-		
+
 		<!-- Swagger -->
 		<dependency>
 			<groupId>io.swagger</groupId>
 			<artifactId>swagger-jersey2-jaxrs</artifactId>
 			<version>1.5.0</version>
 		</dependency>
-		
+
 		<!-- Tag library for jsp -->
 		<dependency>
 			<groupId>jstl</groupId>

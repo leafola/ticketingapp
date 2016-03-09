@@ -1,5 +1,7 @@
 package ie.kevinmay.ticketingapp.model;
 
+import java.util.Date;
+
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -18,8 +20,17 @@ public class Ticket {
 	@Column(name= "title")
 	private String title;
 	
-	@Column(name= "customer")
-	private String  customer;
+	@Column (name="date_created")
+	private Date dateCreated; 
+	
+	@Column(name= "customer_id")
+	private int  customerId;
+	
+	@Column(name= "agent_id")
+	private int  agentId;
+	
+	@Column (name="closed")
+	private boolean closed;
 
 	public int getId() {
 		return id;
@@ -37,11 +48,36 @@ public class Ticket {
 		this.title = title;
 	}
 	
-	public void setCustomer(String customer){
-		this.customer = customer;
+	
+	public Date getDateCreated() {
+		return dateCreated;
 	}
-	public String getCustomer() {
-		return customer;
+
+	public void setDateCreated(Date dateCreated) {
+		this.dateCreated = dateCreated;
+	}
+
+	public boolean getClosed() {
+		return closed;
+	}
+
+	public void setClosed(boolean closed) {
+		this.closed = closed;
+	}
+
+	public void setCustomerId(int customerId){
+		this.customerId = customerId;
+	}
+	public int getCustomerId() {
+		return customerId;
+	}
+	
+	public void setAgentId (int agentId) {
+		this.agentId = agentId;
+	}
+	
+	public int getAgentId (){
+		return agentId;
 	}
 
 }

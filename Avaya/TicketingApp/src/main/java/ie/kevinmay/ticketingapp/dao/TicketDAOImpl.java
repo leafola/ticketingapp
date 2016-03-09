@@ -28,13 +28,13 @@ public class TicketDAOImpl implements TicketDAO {
 	}
 
 	@Override
-	@Transactional
+	@Transactional // Instead of userTransaction. Defines the scope of a single database transaction. 
+	// The database transaction happens inside the scope of a persistence context (EntityManager).
 	@SuppressWarnings("unchecked")
 	// Return a list of all tickets
 	public List<Ticket> list() {
 
 		List<Ticket> allTickets = sessionFactory.getCurrentSession().createCriteria(Ticket.class).list();
-
 		return allTickets;
 	}// end of list()
 

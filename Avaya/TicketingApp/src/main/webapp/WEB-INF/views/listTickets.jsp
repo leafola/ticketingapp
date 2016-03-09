@@ -12,7 +12,10 @@
 				<tr>
 					<th>Ticket Id</th>
 					<th>Title</th>
-					<th>Customer</th>
+					<th>Date Created</th>
+					<th>Customer Id</th>
+					<th>Agent Id</th>
+					<th>Closed</th>
 				</tr>
 			</thead>
 			<tbody>
@@ -20,7 +23,10 @@
 					<tr>
 						<td>${tickets.id}</td>
 						<td>${tickets.title}</td>
-						<td>${tickets.customer}</td>
+						<td>${tickets.dateCreated}</td>
+						<td>${tickets.customerId}</td>
+						<td>${tickets.agentId}</td>
+						<td>${tickets.closed}</td>
 					</tr>
             	</c:forEach>
 			</tbody>
