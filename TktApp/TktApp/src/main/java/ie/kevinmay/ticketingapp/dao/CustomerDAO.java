@@ -5,5 +5,6 @@ import java.util.List;
 import ie.kevinmay.ticketingapp.model.Customer;
 
 public interface CustomerDAO {
-	public List<Customer> list();
+	public List<Customer> listCustomers();
+	public Customer getCustomer(int id);
 } 

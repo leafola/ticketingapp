@@ -31,6 +31,7 @@ public class TicketDAOImpl implements TicketDAO {
 
 	@Override
 	@Transactional
+	@SuppressWarnings("unchecked")
 	public List<Ticket> list() {
 		Query query = entityManager.createQuery(SELECT_QUERY);
 		List<Ticket> tickets = (List<Ticket>) query.getResultList();

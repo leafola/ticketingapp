@@ -12,9 +12,9 @@ import org.springframework.transaction.annotation.Transactional;
 import ie.kevinmay.ticketingapp.model.Customer;
 
 @Repository("customerDAO")
-//@Transactional(propagation = Propagation.REQUIRED)
 public class CustomerDAOImpl implements CustomerDAO {
 	private static final String SELECT_QUERY = "select c from Customer c";
+	
 	@PersistenceContext
 	private EntityManager entityManager;
 
@@ -28,10 +28,18 @@ public class CustomerDAOImpl implements CustomerDAO {
 
 	@Override
 	@Transactional
-	public List<Customer> list() {
+	@SuppressWarnings("unchecked")
+	public List<Customer> listCustomers() {
 		Query query = entityManager.createQuery(SELECT_QUERY);
 		List<Customer> customers = (List<Customer>) query.getResultList();
 		return customers;
+	}
+
+	@Override
+	@Transactional
+	public Customer getCustomer(int id) {
+		Customer customer = entityManager.find(Customer.class, id);
+		return customer;
 	}
 
 }

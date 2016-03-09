@@ -6,6 +6,8 @@
 	<persistence-unit name="testa" transaction-type="RESOURCE_LOCAL">
         <class>ie.kevinmay.ticketingapp.model.Customer;</class>
         <class>ie.kevinmay.ticketingapp.model.Ticket;</class>
+        <class>ie.kevinmay.ticketingapp.model.Post;</class>
+        <class>ie.kevinmay.ticketingapp.model.Agent;</class>
     </persistence-unit>
 
 </persistence>

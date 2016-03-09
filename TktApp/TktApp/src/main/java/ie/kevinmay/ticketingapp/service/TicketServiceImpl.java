@@ -24,7 +24,7 @@ public class TicketServiceImpl implements TicketService {
 	private TicketDAO ticketDAO;
 
 	@GET
-	@Path("/getall")
+	@Path("/tickets")
 	@Produces({MediaType.APPLICATION_JSON})
 	@ApiOperation( 
 		    value = "List all people", 
