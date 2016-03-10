@@ -13,10 +13,13 @@ import org.springframework.stereotype.Component;
 
 import ie.kevinmay.ticketingapp.dao.CustomerDAO;
 import ie.kevinmay.ticketingapp.model.Customer;
+import io.swagger.annotations.Api;
+import io.swagger.annotations.ApiOperation;
 
 @Component // declares CustomerService as a Spring bean.
 @Path("/customerservice") // a JAX-RS annotation that declares CustomerService
 							// as a "root" JAX-RS resource.
+@Api( value = "customer")// could also use tags (tags = {"customers_info","customer_info"})
 public class CustomerServiceImpl implements CustomerService {
 
 	@Autowired // requests a reference to the TicketDAO, which Spring will
@@ -27,6 +30,10 @@ public class CustomerServiceImpl implements CustomerService {
 	@Path("/customers")
 	@Produces({ MediaType.APPLICATION_JSON })
 	@Override
+	@ApiOperation(value = "Finds All Customers",
+    notes = "This is a test note fro Customer",
+    response = Customer.class,
+    responseContainer = "List")
 	public List<Customer> getAllCustomers() {
 		List<Customer> listCustomer = customerDAO.listCustomers();
 		return listCustomer;

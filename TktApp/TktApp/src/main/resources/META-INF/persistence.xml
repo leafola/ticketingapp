@@ -8,6 +8,7 @@
         <class>ie.kevinmay.ticketingapp.model.Ticket;</class>
         <class>ie.kevinmay.ticketingapp.model.Post;</class>
         <class>ie.kevinmay.ticketingapp.model.Agent;</class>
+        <class>ie.kevinmay.ticketingapp.model.Account;</class>
     </persistence-unit>
 
 </persistence>

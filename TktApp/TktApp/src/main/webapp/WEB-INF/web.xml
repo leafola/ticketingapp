@@ -28,7 +28,9 @@
 		<!-- Register resources and providers -->
 		<init-param>
 			<param-name>jersey.config.server.provider.packages</param-name>
-			<param-value>io.swagger.jaxrs.listing, ie.kevinmay.ticketingapp.service</param-value>
+			<param-value>io.swagger.jaxrs.listing, 
+			ie.kevinmay.ticketingapp
+			</param-value>
 		</init-param>
 		<init-param>
 			<param-name>com.sun.jersey.api.json.POJOMappingFeature</param-name>

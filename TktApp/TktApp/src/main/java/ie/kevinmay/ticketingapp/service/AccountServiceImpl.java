@@ -10,31 +10,31 @@ import javax.ws.rs.core.MediaType;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
-import ie.kevinmay.ticketingapp.dao.TicketDAO;
-import ie.kevinmay.ticketingapp.model.Ticket;
+import ie.kevinmay.ticketingapp.dao.AccountDAO;
+import ie.kevinmay.ticketingapp.model.Account;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
 
-@Component // declares TicketService as a Spring bean.
-@Path("/ticketservice") //a JAX-RS annotation that declares TicketService as a "root" JAX-RS resource.
-@Api( value = "ticket")
-public class TicketServiceImpl implements TicketService {
+@Component // declares PostService as a Spring bean.
+@Path("/accountservice") //a JAX-RS annotation that declares TicketService as a "root" JAX-RS resource.
+@Api( value = "/accountservice")
+public class AccountServiceImpl implements AccountService {
 
 	@Autowired // requests a reference to the TicketDAO, which Spring will provide. 
-	private TicketDAO ticketDAO;
+	private AccountDAO accountDAO;
 
 	@GET
-	@Path("/tickets")
+	@Path("/accounts")
 	@Produces({MediaType.APPLICATION_JSON})
 	@ApiOperation( 
-		    value = "List all tickets", 
-		   response = Ticket.class, 
+		    value = "List all accounts", 
+		   response = Account.class, 
 		   responseContainer = "List"
 		)
-	public List<Ticket> getAllTickets() {
-		List<Ticket> listTicket = ticketDAO.list();
+	public List<Account> listAccounts() {
+		List<Account> accounts = accountDAO.listAccounts();
 
-		return listTicket;
+		return accounts;
 	}
 
 }

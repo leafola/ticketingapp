@@ -16,7 +16,7 @@ public class Account {
 	private int id;
 	
 	@Column(name= "username")
-	private String userame;
+	private String username;
 	
 	@Column(name= "pword")
 	private String pword;
@@ -32,12 +32,12 @@ public class Account {
 		this.id = id;
 	}
 
-	public String getUserame() {
-		return userame;
+	public String getUsername() {
+		return username;
 	}
 
-	public void setUserame(String userame) {
-		this.userame = userame;
+	public void setUsername(String username) {
+		this.username = username;
 	}
 
 	public String getPword() {

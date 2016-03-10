@@ -6,16 +6,13 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.persistence.Table;
 
-import io.swagger.annotations.ApiModel;
-
 @Entity
-@Table(name = "CUSTOMER")
-@ApiModel( value = "Customer", description = "Customer resource representation" )
-public class Customer {
+@Table(name = "AGENT")
+public class Agent {
 
 	@Id 
 	@GeneratedValue
-	@Column(name = "customer_id")
+	@Column(name = "agent_id")
 	private int id;
 	
 	@Column(name= "f_name")
@@ -58,11 +55,5 @@ public class Customer {
 	public void setAccountId(int accountId) {
 		this.accountId = accountId;
 	}
-	
-	//@OneToOne(optional=false)
-	//@JoinColumn (name= "account_id")
-	//private Account account;
-	
-	
 	
 }
