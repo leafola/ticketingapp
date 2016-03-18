@@ -38,5 +38,21 @@ public class TicketDAOImpl implements TicketDAO {
 		return tickets;
 	}
 
+	@Override
+	public Ticket getTicket(int id) {
+		Ticket ticket = entityManager.find(Ticket.class, id);
+		return ticket;
+	}
+
+	@Override
+	@SuppressWarnings("unchecked")
+	public List<Ticket> listByCustomer(int id) {
+		Query query = entityManager.createQuery(SELECT_QUERY + " where t.customerId = :id").setParameter("id", id);
+		List<Ticket> tickets = (List<Ticket>) query.getResultList();
+		return tickets;
+	}
+	
+	
+
 
 }

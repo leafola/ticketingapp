@@ -10,5 +10,7 @@ import ie.kevinmay.ticketingapp.model.Ticket;
 public interface TicketDAO {
 	
 	public List<Ticket> list();
+	public Ticket getTicket(int id);
+	public List<Ticket> listByCustomer(int id);
 
 }

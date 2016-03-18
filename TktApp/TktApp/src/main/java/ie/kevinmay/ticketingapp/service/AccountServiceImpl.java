@@ -17,7 +17,7 @@ import io.swagger.annotations.ApiOperation;
 
 @Component // declares PostService as a Spring bean.
 @Path("/accountservice") //a JAX-RS annotation that declares TicketService as a "root" JAX-RS resource.
-@Api( value = "/accountservice")
+@Api( value = "account")
 public class AccountServiceImpl implements AccountService {
 
 	@Autowired // requests a reference to the TicketDAO, which Spring will provide. 

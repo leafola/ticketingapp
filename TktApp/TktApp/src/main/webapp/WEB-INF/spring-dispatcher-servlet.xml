@@ -8,7 +8,10 @@
 
 	<!-- This component-scan element tells Spring where to find @Controller-annotated classes. -->
 	<context:component-scan base-package="ie.kevinmay.ticketingapp.controller" />
-
+	<mvc:resources mapping="/swagger/**" location="/WEB-INF/swagger/" />
+	<!-- registers a converter for reading and writing JSON if Jackson is on the classpath. -->
+	<mvc:annotation-driven />
+	
 	<bean
 		class="org.springframework.web.servlet.view.InternalResourceViewResolver">
 		<property name="prefix">
@@ -18,8 +21,6 @@
 			<value>.jsp</value>
 		</property>
 	</bean>
-	
-    <!--  registers a converter for reading and writing JSON if Jackson is on the classpath. -->
-	<mvc:annotation-driven />
+
 
 </beans>

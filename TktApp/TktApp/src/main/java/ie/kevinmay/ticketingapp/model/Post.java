@@ -1,7 +1,6 @@
 package ie.kevinmay.ticketingapp.model;
 
 import java.sql.Timestamp;
-import java.util.Date;
 
 import javax.persistence.CascadeType;
 import javax.persistence.Column;

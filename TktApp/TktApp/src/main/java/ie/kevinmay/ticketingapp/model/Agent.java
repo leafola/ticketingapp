@@ -6,8 +6,11 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.persistence.Table;
 
+import io.swagger.annotations.ApiModel;
+
 @Entity
 @Table(name = "AGENT")
+@ApiModel(value="agent", description="Operations about agent")
 public class Agent {
 
 	@Id 
@@ -32,19 +35,19 @@ public class Agent {
 		this.id = id;
 	}
 
-	public String getfName() {
+	public String getFName() {
 		return fName;
 	}
 
-	public void setfName(String fName) {
+	public void setFName(String fName) {
 		this.fName = fName;
 	}
 
-	public String getlName() {
+	public String getLName() {
 		return lName;
 	}
 
-	public void setlName(String lName) {
+	public void setLName(String lName) {
 		this.lName = lName;
 	}
 
