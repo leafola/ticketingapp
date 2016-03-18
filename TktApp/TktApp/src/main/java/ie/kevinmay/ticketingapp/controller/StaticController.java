@@ -12,4 +12,9 @@ public class StaticController {
 	     
 	      return "redirect:/swagger/index.html";
 	   }
+	
+	@RequestMapping(value = "/tickets", method = RequestMethod.GET)
+    public String getIndexPage() {
+        return "listTicketsAngular";
+    }
 }
