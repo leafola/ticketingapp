@@ -15,7 +15,6 @@ import org.springframework.stereotype.Component;
 
 import ie.kevinmay.ticketingapp.dao.AccountDAO;
 import ie.kevinmay.ticketingapp.model.Account;
-import ie.kevinmay.ticketingapp.model.Customer;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
 
