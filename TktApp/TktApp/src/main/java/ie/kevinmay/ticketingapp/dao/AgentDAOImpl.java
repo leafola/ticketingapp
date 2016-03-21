@@ -10,6 +10,7 @@ import org.springframework.stereotype.Repository;
 import org.springframework.transaction.annotation.Transactional;
 
 import ie.kevinmay.ticketingapp.model.Agent;
+import ie.kevinmay.ticketingapp.model.Post;
 
 @Repository("agentDAO")
 public class AgentDAOImpl implements AgentDAO {
@@ -40,6 +41,17 @@ public class AgentDAOImpl implements AgentDAO {
 	public Agent getAgent(int id) {
 		Agent agent = entityManager.find(Agent.class, id);
 		return agent;
+	}
+
+	@Override
+	@Transactional
+	public void createAgent(Agent agent) {
+		Agent newAgent = new Agent();
+		newAgent.setFName(agent.getFName());
+		newAgent.setLName(agent.getLName());
+		newAgent.setAccountId(agent.getAccountId());
+		entityManager.persist(newAgent);
+		
 	}
 
 }

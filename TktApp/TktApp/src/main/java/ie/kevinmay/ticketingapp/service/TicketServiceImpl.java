@@ -2,6 +2,7 @@ package ie.kevinmay.ticketingapp.service;
 
 import java.util.List;
 
+import javax.ws.rs.DELETE;
 import javax.ws.rs.GET;
 import javax.ws.rs.Path;
 import javax.ws.rs.PathParam;
@@ -50,6 +51,7 @@ public class TicketServiceImpl implements TicketService {
 	}
 	
 	@GET
+	@Override
 	@Path("/tickets/customer/{customerid}")
 	@Produces(MediaType.APPLICATION_JSON)
 	@ApiOperation( 
@@ -60,6 +62,19 @@ public class TicketServiceImpl implements TicketService {
 		)
 	public List<Ticket> getByCustomer(@PathParam("customerid") int customerid) {
 		return ticketDAO.listByCustomer(customerid);
+	}
+
+	@Override
+	@DELETE
+	@Path("/tickets/{ticketid}")
+	@ApiOperation( 
+		    value = "Delete Ticket by Id",
+		    notes = "This is where I can add implementation notes",
+		    response = Ticket.class
+			)
+	public void deleteTicket(@PathParam("ticketid") int id) {
+		ticketDAO.deleteTicket(id);
+		
 	}
 	
 	

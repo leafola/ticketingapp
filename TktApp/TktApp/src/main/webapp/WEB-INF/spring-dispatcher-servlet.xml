@@ -10,6 +10,7 @@
 	<context:component-scan base-package="ie.kevinmay.ticketingapp.controller" />
 	<mvc:resources mapping="/swagger/**" location="/WEB-INF/swagger/" />
 	<mvc:resources mapping="static/**" location="/static/" />
+	<mvc:resources mapping="/lib/**" location="WEB-INF/lib/" />
 	<!-- registers a converter for reading and writing JSON if Jackson is on the classpath. -->
 	<mvc:annotation-driven />
 	

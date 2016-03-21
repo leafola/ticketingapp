@@ -2,8 +2,11 @@ package ie.kevinmay.ticketingapp.service;
 
 import java.util.List;
 
+import javax.ws.rs.Consumes;
 import javax.ws.rs.GET;
+import javax.ws.rs.POST;
 import javax.ws.rs.Path;
+import javax.ws.rs.PathParam;
 import javax.ws.rs.Produces;
 import javax.ws.rs.core.MediaType;
 
@@ -35,6 +38,33 @@ public class PostServiceImpl implements PostService {
 		List<Post> posts = postDAO.listPosts();
 
 		return posts;
+	}
+	
+	@POST
+	@Path("/posts/post")
+	@Consumes({MediaType.APPLICATION_JSON})
+	@Override
+	@ApiOperation( 
+		    value = "Create new Post",
+		    notes = "This is where I can add implementation notes"
+		)
+	public void createPost(Post post) {
+		postDAO.createPost(post);
+		
+	}
+
+	@GET
+	@Override
+	@Path("/posts/ticket/{ticketid}")
+	@Produces(MediaType.APPLICATION_JSON)
+	@ApiOperation( 
+		    value = "Find Posts by Ticket Id",
+		    notes = "This is where I can add implementation notes",
+		    response = Post.class, 
+			responseContainer = "List"
+		)
+	public List<Post> byTicket(@PathParam("ticketid") int id) {
+		return postDAO.byTicket(id);
 	}
 
 }

@@ -38,5 +38,22 @@ public class AccountDAOImpl implements AccountDAO {
 		return accounts;
 	}
 
+	@Override
+	@Transactional
+	public void createAccount(String username, String pword, String role) {
+		Account account = new Account(username, pword, role);
+		entityManager.persist(account);
+		
+	}
+
+	@Override
+	@Transactional
+	public void updateAccount(Account account) {
+		Account tempAcc = entityManager.find(Account.class, account.getId());
+		tempAcc.setPword(account.getPword());
+		tempAcc.setUsername(account.getUsername());
+		tempAcc.setRole(account.getRole());
+	}
+
 
 }

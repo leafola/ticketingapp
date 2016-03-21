@@ -6,7 +6,9 @@ import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
 import javax.persistence.Query;
 
+import ie.kevinmay.ticketingapp.model.Account;
 import ie.kevinmay.ticketingapp.model.Post;
+import ie.kevinmay.ticketingapp.model.Ticket;
 
 import org.springframework.stereotype.Repository;
 import org.springframework.transaction.annotation.Transactional;
@@ -34,6 +36,25 @@ public class PostDAOImpl implements PostDAO {
 	@SuppressWarnings("unchecked")
 	public List<Post> listPosts() {
 		Query query = entityManager.createQuery(SELECT_QUERY);
+		List<Post> posts = (List<Post>) query.getResultList();
+		return posts;
+	}
+
+	@Override
+	@Transactional
+	public void createPost(Post post) {
+		Post pst = new Post();
+		pst.setBody(post.getBody());
+		pst.setTicketId(post.getTicketId());
+		pst.setAuthor(post.getAuthor());
+		pst.setDateCreated(post.getDateCreated());
+		entityManager.persist(pst);
+		
+	}
+
+	@Override
+	public List<Post> byTicket(int id) {
+		Query query = entityManager.createQuery(SELECT_QUERY + " where p.ticketId = :id").setParameter("id", id);
 		List<Post> posts = (List<Post>) query.getResultList();
 		return posts;
 	}

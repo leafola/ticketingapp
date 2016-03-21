@@ -7,4 +7,5 @@ import ie.kevinmay.ticketingapp.model.Agent;
 public interface AgentService {
 	public List<Agent> getAllAgents();
 	public Agent getAgent(int id);
+	public void createAgent(Agent agent);
 }

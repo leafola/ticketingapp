@@ -62,8 +62,9 @@
 	</build>
 
 	<dependencies>
-		
-		<!-- Added to get rid of Failed to load class org.slf4j.impl.StaticLoggerBinder in console -->
+
+		<!-- Added to get rid of Failed to load class org.slf4j.impl.StaticLoggerBinder 
+			in console -->
 		<dependency>
 			<groupId>org.slf4j</groupId>
 			<artifactId>slf4j-simple</artifactId>
@@ -178,5 +179,13 @@
 			<artifactId>mysql-connector-java</artifactId>
 			<version>${mysql.version}</version>
 		</dependency>
+
+		<!-- Metawidget for automatic GUI generation -->
+		<dependency>
+			<groupId>org.metawidget.modules</groupId>
+			<artifactId>metawidget-all</artifactId>
+			<version>1.20</version>
+		</dependency>
+
 	</dependencies>
 </project>

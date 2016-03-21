@@ -7,6 +7,8 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.persistence.Table;
+import javax.persistence.Temporal;
+import javax.persistence.TemporalType;
 
 @Entity
 @Table(name = "TICKET")
@@ -21,6 +23,7 @@ public class Ticket {
 	private String title;
 	
 	@Column (name="date_created")
+	@Temporal(TemporalType.DATE)
 	private Date dateCreated; 
 	
 	@Column(name= "customer_id")

@@ -2,13 +2,10 @@ package ie.kevinmay.ticketingapp.model;
 
 import java.sql.Timestamp;
 
-import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
-import javax.persistence.JoinColumn;
-import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 
 @Entity
@@ -29,9 +26,8 @@ public class Post {
 	@Column (name="date_created")
 	private Timestamp dateCreated;
 	
-	@ManyToOne (cascade = {CascadeType.PERSIST, CascadeType.MERGE} )
-	@JoinColumn (name="ticket_id")
-	public Ticket ticket; 
+	@Column (name="ticket_id")
+	private int ticketId;
 
 	public int getId() {
 		return id;
@@ -65,12 +61,12 @@ public class Post {
 		this.dateCreated = dateCreated;
 	}
 
-	public Ticket getTicket() {
-		return ticket;
+	public int getTicketId() {
+		return ticketId;
 	}
 
-	public void setTicketId(Ticket ticket) {
-		this.ticket = ticket;
+	public void setTicketId(int ticketId) {
+		this.ticketId = ticketId;
 	}
 	
 }

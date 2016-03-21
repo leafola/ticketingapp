@@ -2,7 +2,9 @@ package ie.kevinmay.ticketingapp.service;
 
 import java.util.List;
 
+import javax.ws.rs.Consumes;
 import javax.ws.rs.GET;
+import javax.ws.rs.POST;
 import javax.ws.rs.Path;
 import javax.ws.rs.PathParam;
 import javax.ws.rs.Produces;
@@ -31,7 +33,7 @@ public class CustomerServiceImpl implements CustomerService {
 	@Produces({ MediaType.APPLICATION_JSON })
 	@Override
 	@ApiOperation(value = "Finds All Customers",
-    notes = "This is a test note fro Customer",
+    notes = "This is a test note for Customer",
     response = Customer.class,
     responseContainer = "List")
 	public List<Customer> getAllCustomers() {
@@ -42,7 +44,21 @@ public class CustomerServiceImpl implements CustomerService {
 	@GET
 	@Path("/customers/{customerid}")
 	@Produces(MediaType.APPLICATION_JSON)
+	@ApiOperation(value = "Get Customer by Id",
+    notes = "This is a test note for Customer",
+    response = Customer.class)
 	public Customer getCustomer(@PathParam("customerid") int customerid) {
 		return customerDAO.getCustomer(customerid);
+	}
+
+	@POST
+	@Path("/customers/customer")
+	@Consumes({MediaType.APPLICATION_JSON})
+	@Override
+	@ApiOperation(value = "Create new Customer",
+    notes = "This is a test note for Customer")
+	public void createCustomer(Customer customer) {
+		customerDAO.createCustomer(customer);
+		
 	}
 }

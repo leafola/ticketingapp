@@ -17,4 +17,5 @@ public class StaticController {
     public String getIndexPage() {
         return "listTicketsAngular";
     }
+	
 }

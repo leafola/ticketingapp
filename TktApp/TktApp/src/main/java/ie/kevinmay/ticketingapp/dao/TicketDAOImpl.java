@@ -51,6 +51,15 @@ public class TicketDAOImpl implements TicketDAO {
 		List<Ticket> tickets = (List<Ticket>) query.getResultList();
 		return tickets;
 	}
+
+	@Override
+	@Transactional
+	public void deleteTicket(int id) {
+		Ticket ticket = entityManager.find(Ticket.class, id);
+		entityManager.remove(ticket);
+	}
+	
+	
 	
 	
 

@@ -23,6 +23,15 @@ public class Account {
 	
 	@Column(name= "role")
 	private String role;
+	
+	public Account () {
+		//dummy constructor
+	}
+	public Account(String username, String pword, String role) {
+		this.username = username;
+		this.pword = pword;
+		this.role = role;
+	}
 
 	public int getId() {
 		return id;

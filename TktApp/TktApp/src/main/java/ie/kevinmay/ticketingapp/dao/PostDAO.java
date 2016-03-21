@@ -3,6 +3,7 @@ package ie.kevinmay.ticketingapp.dao;
 import java.util.List;
 
 import ie.kevinmay.ticketingapp.model.Post;
+import ie.kevinmay.ticketingapp.model.Ticket;
 
 /**
  * Defines DAO operations for the ticket model.
@@ -11,6 +12,7 @@ import ie.kevinmay.ticketingapp.model.Post;
 public interface PostDAO {
 	
 	public List<Post> listPosts();
-	//public Post getPoss(int id);
+	public List<Post> byTicket(int id);
+	public void createPost(Post post);
 
 }

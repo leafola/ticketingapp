@@ -10,6 +10,7 @@ import org.springframework.stereotype.Repository;
 import org.springframework.transaction.annotation.Transactional;
 
 import ie.kevinmay.ticketingapp.model.Customer;
+import ie.kevinmay.ticketingapp.model.Customer;
 
 @Repository("customerDAO")
 public class CustomerDAOImpl implements CustomerDAO {
@@ -40,6 +41,17 @@ public class CustomerDAOImpl implements CustomerDAO {
 	public Customer getCustomer(int id) {
 		Customer customer = entityManager.find(Customer.class, id);
 		return customer;
+	}
+
+	@Override
+	@Transactional
+	public void createCustomer(Customer customer) {
+		Customer newCustomer = new Customer();
+		newCustomer.setFName(customer.getFName());
+		newCustomer.setLName(customer.getLName());
+		newCustomer.setAccountId(customer.getAccountId());
+		entityManager.persist(newCustomer);
+		
 	}
 
 }

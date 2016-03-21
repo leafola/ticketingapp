@@ -35,19 +35,19 @@ public class Customer {
 		this.id = id;
 	}
 
-	public String getfName() {
+	public String getFName() {
 		return fName;
 	}
 
-	public void setfName(String fName) {
+	public void setFName(String fName) {
 		this.fName = fName;
 	}
 
-	public String getlName() {
+	public String getLName() {
 		return lName;
 	}
 
-	public void setlName(String lName) {
+	public void setLName(String lName) {
 		this.lName = lName;
 	}
 
@@ -58,11 +58,6 @@ public class Customer {
 	public void setAccountId(int accountId) {
 		this.accountId = accountId;
 	}
-	
-	//@OneToOne(optional=false)
-	//@JoinColumn (name= "account_id")
-	//private Account account;
-	
-	
+		
 	
 }
