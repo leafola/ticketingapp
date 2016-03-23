@@ -13,6 +13,6 @@ public interface AccountDAO {
 	public List<Account> listAccounts();
 	public void createAccount(String username, String pword, String role);
 	public void updateAccount(Account account);
-	//public Account getAccount(int id);
+	public void getAccount(String username);
 
 }

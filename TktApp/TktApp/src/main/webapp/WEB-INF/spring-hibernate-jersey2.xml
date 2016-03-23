@@ -9,13 +9,13 @@
 			http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context-2.5.xsd
 			http://www.springframework.org/schema/jee http://www.springframework.org/schema/jee/spring-jee-2.5.xsd
 			http://www.springframework.org/schema/tx http://www.springframework.org/schema/tx/spring-tx-2.5.xsd">
-	   <!--  Scan for both Jersey Rest Annotations a -->
-	   <!-- scans packages to find and register beans within the application context -->
-		<context:component-scan base-package="ie.kevinmay.ticketingapp" />
-       <context:annotation-config />
-       <tx:annotation-driven />
-	   
-	   <!-- dataSource configuration -->
+	<!-- Scan for both Jersey Rest Annotations a -->
+	<!-- scans packages to find and register beans within the application context -->
+	<context:component-scan base-package="ie.kevinmay.ticketingapp" />
+	<context:annotation-config />
+	<tx:annotation-driven />
+
+	<!-- dataSource configuration -->
 	<bean id="dataSource"
 		class="org.springframework.jdbc.datasource.DriverManagerDataSource">
 		<property name="driverClassName" value="com.mysql.jdbc.Driver" />
@@ -24,7 +24,7 @@
 		<property name="username" value="root" />
 		<property name="password" value="password" />
 	</bean>
-	
+
 
 	<bean id="entityManagerFactory"
 		class="org.springframework.orm.jpa.LocalContainerEntityManagerFactoryBean"
@@ -34,11 +34,11 @@
 				class="org.springframework.instrument.classloading.InstrumentationLoadTimeWeaver" />
 		</property>
 	</bean>
-	
-	
+
+
 	<bean id="transactionManager" class="org.springframework.orm.jpa.JpaTransactionManager"
 		p:entityManagerFactory-ref="entityManagerFactory" />
 	<bean id="jpaAdapter"
 		class="org.springframework.orm.jpa.vendor.HibernateJpaVendorAdapter"
 		p:database="MYSQL" p:showSql="true" />
-   </beans>
+</beans>

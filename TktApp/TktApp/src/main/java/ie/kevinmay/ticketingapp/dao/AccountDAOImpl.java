@@ -55,5 +55,11 @@ public class AccountDAOImpl implements AccountDAO {
 		tempAcc.setRole(account.getRole());
 	}
 
+	@Override
+	public void getAccount(String username) {
+		// TODO Auto-generated method stub
+		
+	}
+
 
 }
