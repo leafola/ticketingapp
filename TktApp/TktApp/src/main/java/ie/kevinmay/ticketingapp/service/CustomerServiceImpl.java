@@ -61,4 +61,15 @@ public class CustomerServiceImpl implements CustomerService {
 		customerDAO.createCustomer(customer);
 		
 	}
+
+	@GET
+	@Path("/customers/account/{accountid}")
+	@Produces(MediaType.APPLICATION_JSON)
+	@ApiOperation(value = "Get Customer by FK Account Id",
+    notes = "This is a test note for Customer",
+    response = Customer.class)
+	public Customer getCustomerByAccount(@PathParam("accountid")int accountid) {
+		return customerDAO.getCustomerByAccount(accountid);
+		
+	}
 }

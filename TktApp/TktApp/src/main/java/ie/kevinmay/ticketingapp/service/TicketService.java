@@ -9,5 +9,8 @@ public interface TicketService {
 	
 	public void deleteTicket(int id);
 
-	List<Ticket> getByCustomer(int customerid);
+	public List<Ticket> getByCustomer(int customerid);
+	public List<Ticket> getByCustomerUsername(String username);
+	public void createTicket(Ticket ticket);
+	
 }

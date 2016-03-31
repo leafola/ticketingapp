@@ -133,6 +133,13 @@
 			<version>4.0.2.RELEASE</version>
 		</dependency>
 
+		<!-- Spring Security JSP Taglib -->
+		<dependency>
+			<groupId>org.springframework.security</groupId>
+			<artifactId>spring-security-taglibs</artifactId>
+			<version>4.0.2.RELEASE</version>
+		</dependency>
+
 		<!-- Hibernate Core 4.2.x -->
 		<dependency>
 			<groupId>org.hibernate</groupId>

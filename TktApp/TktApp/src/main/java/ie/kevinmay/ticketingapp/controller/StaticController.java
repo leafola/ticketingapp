@@ -18,4 +18,5 @@ public class StaticController {
         return "listTicketsAngular";
     }
 	
+ 	
 }

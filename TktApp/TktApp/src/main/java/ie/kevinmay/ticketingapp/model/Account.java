@@ -18,8 +18,8 @@ public class Account {
 	@Column(name= "username")
 	private String username;
 	
-	@Column(name= "pword")
-	private String pword;
+	@Column(name= "password")
+	private String password;
 	
 	@Column(name= "role")
 	private String role;
@@ -29,7 +29,7 @@ public class Account {
 	}
 	public Account(String username, String pword, String role) {
 		this.username = username;
-		this.pword = pword;
+		this.password = pword;
 		this.role = role;
 	}
 
@@ -49,12 +49,12 @@ public class Account {
 		this.username = username;
 	}
 
-	public String getPword() {
-		return pword;
+	public String getPassword() {
+		return password;
 	}
 
-	public void setPword(String pword) {
-		this.pword = pword;
+	public void setPassword(String pword) {
+		this.password = pword;
 	}
 
 	public String getRole() {

@@ -41,13 +41,12 @@ public class PostDAOImpl implements PostDAO {
 	@Override
 	@Transactional
 	public void createPost(Post post) {
-		Post pst = new Post();
-		pst.setBody(post.getBody());
-		pst.setTicketId(post.getTicketId());
-		pst.setAuthor(post.getAuthor());
-		pst.setDateCreated(post.getDateCreated());
-		entityManager.persist(pst);
-		
+		Post newPost = new Post();
+		newPost.setBody(post.getBody());
+		newPost.setTicketId(post.getTicketId());
+		newPost.setAuthor(post.getAuthor());
+		newPost.setAuthorName(post.getAuthorName());
+		entityManager.persist(newPost);
 	}
 
 	@SuppressWarnings("unchecked")
@@ -58,6 +57,6 @@ public class PostDAOImpl implements PostDAO {
 		List<Post> posts = (List<Post>) query.getResultList();
 		return posts;
 	}
-
+	
 
 }

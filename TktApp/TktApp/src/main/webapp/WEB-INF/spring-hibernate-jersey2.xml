@@ -11,7 +11,11 @@
 			http://www.springframework.org/schema/tx http://www.springframework.org/schema/tx/spring-tx-2.5.xsd">
 	<!-- Scan for both Jersey Rest Annotations a -->
 	<!-- scans packages to find and register beans within the application context -->
-	<context:component-scan base-package="ie.kevinmay.ticketingapp" />
+	<context:component-scan use-default-filters="true"
+        base-package="ie.kevinmay.ticketingapp">
+        <context:exclude-filter type="annotation" expression="org.springframework.stereotype.Controller"/>
+    </context:component-scan>
+
 	<context:annotation-config />
 	<tx:annotation-driven />
 

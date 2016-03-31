@@ -35,6 +35,15 @@ public class Ticket {
 	@Column (name="closed")
 	private boolean closed;
 
+	public Ticket () {
+		//dummy constructor
+	}
+	public Ticket(String title, int customerId, int agentId) {
+		this.title = title;
+		this.customerId = customerId;
+		this.agentId = agentId;
+	}
+	
 	public int getId() {
 		return id;
 	}

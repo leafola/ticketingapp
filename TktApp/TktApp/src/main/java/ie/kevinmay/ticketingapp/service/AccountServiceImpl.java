@@ -7,10 +7,13 @@ import javax.ws.rs.GET;
 import javax.ws.rs.POST;
 import javax.ws.rs.PUT;
 import javax.ws.rs.Path;
+import javax.ws.rs.PathParam;
 import javax.ws.rs.Produces;
 import javax.ws.rs.core.MediaType;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.core.context.SecurityContextHolder;
+import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.stereotype.Component;
 
 import ie.kevinmay.ticketingapp.dao.AccountDAO;
@@ -34,6 +37,7 @@ public class AccountServiceImpl implements AccountService {
 		   response = Account.class, 
 		   responseContainer = "List"
 		)
+	
 	public List<Account> listAccounts() {
 		List<Account> accounts = accountDAO.listAccounts();
 
@@ -47,7 +51,7 @@ public class AccountServiceImpl implements AccountService {
 	@ApiOperation(value = "Create new Account",
     notes = "This is a test note for Customer")
 	public void createAccount(Account account) {
-		accountDAO.createAccount(account.getUsername(), account.getPword(), account.getRole());
+		accountDAO.createAccount(account.getUsername(), account.getPassword(), account.getRole());
 	}
 
 	@Override
@@ -60,5 +64,32 @@ public class AccountServiceImpl implements AccountService {
 		accountDAO.updateAccount(account);
 		
 	}
+
+	@Override
+	@GET
+	@Consumes({MediaType.APPLICATION_JSON})
+	@Path ("/accounts/account/{username}")
+	public Account getAccountByUsername(@PathParam("username") String username) {
+		return accountDAO.getAccountByUsername(username);
+	}
+	
+	@Override
+	@GET
+	@Produces({MediaType.APPLICATION_JSON})
+	@Path ("/accounts/account/loggedin")
+	public Account getLoggedInAccount() {
+		String username;
+		Object principal = SecurityContextHolder.getContext().getAuthentication().getPrincipal();
+		if (principal instanceof UserDetails) {
+		  username = ((UserDetails)principal).getUsername();
+		} else {
+		  username = principal.toString();
+		}
+		Account account = accountDAO.getAccountByUsername(username);
+		account.setPassword("Not Available");
+        return account;
+	}
+	
+	
 
 }

@@ -5,10 +5,6 @@
 
 	<display-name>TicketingApp</display-name>
 
-	<!-- Spring Listener -->
-	<listener>
-		<listener-class>org.springframework.web.context.ContextLoaderListener</listener-class>
-	</listener>
 	<!-- loading Spring Context for registering beans with ApplicationContext -->
 	<context-param>
 		<param-name>contextConfigLocation</param-name>
@@ -17,19 +13,12 @@
 		WEB-INF/spring-security.xml
 		</param-value>
 	</context-param>
-
-
-	<!-- Spring Dispatcher Servlet -->
-	<servlet>
-		<servlet-name>spring-dispatcher</servlet-name>
-		<servlet-class>org.springframework.web.servlet.DispatcherServlet</servlet-class>
-		<load-on-startup>1</load-on-startup>
-	</servlet>
-	<servlet-mapping>
-		<servlet-name>spring-dispatcher</servlet-name>
-		<url-pattern>/web/*</url-pattern>
-	</servlet-mapping>
-
+	
+	<!-- Spring Listener -->
+	<listener>
+		<listener-class>org.springframework.web.context.ContextLoaderListener</listener-class>
+	</listener>
+	
 	<!-- Jersey Servlet -->
 	<servlet>
 		<servlet-name>jersey-servlet</servlet-name>
@@ -52,7 +41,7 @@
 		<servlet-name>jersey-servlet</servlet-name>
 		<url-pattern>/rest/*</url-pattern>
 	</servlet-mapping>
-
+	
 	<!-- Spring Security Filter -->
 	<filter>
 		<filter-name>springSecurityFilterChain</filter-name>
@@ -63,7 +52,24 @@
 		<filter-name>springSecurityFilterChain</filter-name>
 		<url-pattern>/*</url-pattern>
 	</filter-mapping>
-	
+
+
+	<!-- Spring Dispatcher Servlet -->
+	<servlet>
+		<servlet-name>spring-dispatcher</servlet-name>
+		<servlet-class>org.springframework.web.servlet.DispatcherServlet</servlet-class>
+		<init-param>
+			<param-name>contextConfigLocation</param-name>
+			<param-value>WEB-INF/spring-dispatcher-servlet.xml</param-value>
+		</init-param>
+		<load-on-startup>1</load-on-startup>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>spring-dispatcher</servlet-name>
+		<url-pattern>/web/*</url-pattern>
+	</servlet-mapping>
+
+
 	<!-- Swagger servlet -->
 	<servlet>
 		<servlet-name>Jersey2Config</servlet-name>

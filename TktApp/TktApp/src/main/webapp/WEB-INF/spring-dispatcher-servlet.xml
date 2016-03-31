@@ -7,10 +7,17 @@
         http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context-4.0.xsd">
 
 	<!-- This component-scan element tells Spring where to find @Controller-annotated classes. -->
-	<context:component-scan base-package="ie.kevinmay.ticketingapp.controller" />
+	
+	<context:component-scan use-default-filters="false"
+        base-package="ie.kevinmay.ticketingapp.controller">
+        <context:include-filter type="annotation"
+            expression="org.springframework.stereotype.Controller" />
+    </context:component-scan>
+    
 	<mvc:resources mapping="/swagger/**" location="/WEB-INF/swagger/" />
 	<mvc:resources mapping="static/**" location="/static/" />
 	<mvc:resources mapping="/lib/**" location="WEB-INF/lib/" />
+	
 	<!-- registers a converter for reading and writing JSON if Jackson is on the classpath. -->
 	<mvc:annotation-driven />
 	

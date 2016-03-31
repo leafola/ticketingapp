@@ -1,42 +1,66 @@
 body, #mainWrapper {
 	height: 70%;
-	background-color:rgb(245, 245, 245);
+	background-color: rgb(245, 245, 245);
 }
 
-body, .form-control{
-	font-size:12px!important;
+body, .form-control {
+	font-size: 12px !important;
 }
 
-.floatRight{
-	float:right;
+.floatRight {
+	float: right;
 	margin-right: 18px;
 }
 
-.has-error{
-	color:red;
+.has-error {
+	color: red;
 }
 
-.formcontainer{
+.formcontainer {
 	background-color: #DAE8E8;
 	padding: 20px;
 }
 
-.tablecontainer{
+.tablecontainer {
 	padding-left: 20px;
 }
 
 .generic-container {
-  width:80%;
-  margin-left: 20px;
-  margin-top: 20px;
-  margin-bottom: 20px;
-  padding: 20px;
-  background-color: #EAE7E7;
-  border: 1px solid #ddd;
-  border-radius: 4px;
-  box-shadow: 0 0 30px black;
+	width: 96%;
+	margin-left: 20px;
+	margin-top: 20px;
+	margin-bottom: 20px;
+	padding: 20px;
+	background-color: #EAE7E7;
+	border: 1px solid #ddd;
+	border-radius: 4px;
+	box-shadow: 0 0 30px black;
 }
 
 .custom-width {
-    width: 80px !important;
+	width: 80px !important;
+}
+
+.Absolute-Center.is-Responsive {
+	width: 50%;
+	height: 50%;
+	min-width: 200px;
+	max-width: 400px;
+	padding: 40px;
+}
+
+.conversation {
+	padding: 20px;
+	margin-bottom: 10px;
+	margin-right: 50px;
+	border-radius: 25px;
+	background: #73AD21;
+}
+
+.conversation2 {
+	padding: 20px;
+	margin-bottom: 10px;
+	margin-left: 50px;
+	border-radius: 25px;
+	background: #aa3355;
 }

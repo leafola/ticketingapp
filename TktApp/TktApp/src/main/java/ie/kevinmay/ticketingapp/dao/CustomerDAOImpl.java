@@ -53,4 +53,18 @@ public class CustomerDAOImpl implements CustomerDAO {
 		
 	}
 
+	@Override
+	@Transactional
+	public Customer getCustomerByAccount(int accountid) {
+		Customer customer = new Customer();
+		Query query = entityManager.createQuery(SELECT_QUERY);
+		List<Customer> customers = (List<Customer>) query.getResultList();
+		for (Customer cstmr : customers){
+			if (cstmr.getAccountId() == accountid){
+				customer = cstmr;
+			}
+		}
+		return customer;
+	}
+
 }

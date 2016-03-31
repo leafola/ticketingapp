@@ -17,7 +17,7 @@ import org.springframework.transaction.annotation.Transactional;
 @Repository("accountDAO")
 public class AccountDAOImpl implements AccountDAO {
 
-	private static final String SELECT_QUERY = "select p from Account p";
+	private static final String SELECT_QUERY = "select a from Account a";
 	@PersistenceContext
 	private EntityManager entityManager;
 
@@ -50,15 +50,24 @@ public class AccountDAOImpl implements AccountDAO {
 	@Transactional
 	public void updateAccount(Account account) {
 		Account tempAcc = entityManager.find(Account.class, account.getId());
-		tempAcc.setPword(account.getPword());
+		tempAcc.setPassword(account.getPassword());
 		tempAcc.setUsername(account.getUsername());
 		tempAcc.setRole(account.getRole());
 	}
 
 	@Override
-	public void getAccount(String username) {
-		// TODO Auto-generated method stub
-		
+	@Transactional
+	@SuppressWarnings("unchecked")
+	public Account getAccountByUsername(String username) {
+		Query query = entityManager.createQuery(SELECT_QUERY);
+		List<Account> accounts = (List<Account>) query.getResultList();
+		Account account = new Account();
+		for (Account acc : accounts){
+			if (acc.getUsername().equals(username)) {
+				account = acc;
+			}
+		}
+		return account;
 	}
 
 

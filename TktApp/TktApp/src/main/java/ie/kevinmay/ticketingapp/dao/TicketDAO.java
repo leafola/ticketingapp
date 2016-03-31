@@ -13,5 +13,7 @@ public interface TicketDAO {
 	public Ticket getTicket(int id);
 	public List<Ticket> listByCustomer(int id);
 	public void deleteTicket(int id);
+	List<Ticket> listByCustomerUsername(String username);
+	public void createTicket(Ticket ticket);
 
 }

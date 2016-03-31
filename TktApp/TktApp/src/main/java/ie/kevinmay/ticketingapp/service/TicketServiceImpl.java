@@ -2,8 +2,10 @@ package ie.kevinmay.ticketingapp.service;
 
 import java.util.List;
 
+import javax.ws.rs.Consumes;
 import javax.ws.rs.DELETE;
 import javax.ws.rs.GET;
+import javax.ws.rs.POST;
 import javax.ws.rs.Path;
 import javax.ws.rs.PathParam;
 import javax.ws.rs.Produces;
@@ -74,6 +76,31 @@ public class TicketServiceImpl implements TicketService {
 			)
 	public void deleteTicket(@PathParam("ticketid") int id) {
 		ticketDAO.deleteTicket(id);
+		
+	}
+
+	@GET
+	@Override
+	@Path("/tickets/customer/username/{username}")
+	@Produces(MediaType.APPLICATION_JSON)
+	@ApiOperation( 
+		    value = "Find Ticket by Customer Username",
+		    notes = "This is where I can add implementation notes",
+		    response = Ticket.class, 
+			responseContainer = "List"
+		)
+	public List<Ticket> getByCustomerUsername(@PathParam("username") String username) {
+		return ticketDAO.listByCustomerUsername(username);
+	}
+
+	@POST
+	@Path("/tickets/ticket")
+	@Consumes({MediaType.APPLICATION_JSON})
+	@Override
+	@ApiOperation(value = "Create new Ticket",
+    notes = "This is a test note for Ticket")
+	public void createTicket(Ticket ticket) {
+		ticketDAO.createTicket(ticket);
 		
 	}
 	

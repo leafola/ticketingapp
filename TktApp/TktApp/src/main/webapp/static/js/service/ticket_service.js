@@ -16,6 +16,19 @@ App.factory('TicketService', ['$http', '$q', function($http, $q){
                                     }
                             );
             },
+            
+            fetchCustomerTickets: function(username) {
+                return $http.get('http://localhost:8080/rest/ticketservice/tickets/customer/username/'+username)
+                        .then(
+                                function(response){
+                                    return response.data;
+                                }, 
+                                function(errResponse){
+                                    console.error('Error while fetching tickets');
+                                    return $q.reject(errResponse);
+                                }
+                        );
+        },
     
 		    fetchTicket: function() {
 		    	

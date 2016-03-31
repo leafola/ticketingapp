@@ -1,12 +1,14 @@
 package ie.kevinmay.ticketingapp.model;
 
-import java.sql.Timestamp;
+import java.util.Date;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.persistence.Table;
+import javax.persistence.Temporal;
+import javax.persistence.TemporalType;
 
 @Entity
 @Table(name = "POST")
@@ -23,8 +25,12 @@ public class Post {
 	@Column(name="author")
 	private int author;
 	
+	@Column(name="author_name")
+	private String authorName;
+	
 	@Column (name="date_created")
-	private Timestamp dateCreated;
+	@Temporal(TemporalType.DATE)
+	private Date dateCreated;
 	
 	@Column (name="ticket_id")
 	private int ticketId;
@@ -53,11 +59,11 @@ public class Post {
 		this.author = author;
 	}
 
-	public Timestamp getDateCreated() {
+	public Date getDateCreated() {
 		return dateCreated;
 	}
 
-	public void setDateCreated(Timestamp dateCreated) {
+	public void setDateCreated(Date dateCreated) {
 		this.dateCreated = dateCreated;
 	}
 
@@ -67,6 +73,14 @@ public class Post {
 
 	public void setTicketId(int ticketId) {
 		this.ticketId = ticketId;
+	}
+	
+	public void setAuthorName(String authorName) {
+		this.authorName = authorName;
+	}
+	
+	public String getAuthorName(){
+		return authorName;
 	}
 	
 }
