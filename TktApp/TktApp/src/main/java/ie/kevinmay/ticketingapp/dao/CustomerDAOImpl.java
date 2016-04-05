@@ -67,4 +67,12 @@ public class CustomerDAOImpl implements CustomerDAO {
 		return customer;
 	}
 
+	@Override
+	@Transactional
+	public void updateCustomer(Customer customer) {
+		Customer cstmr = getCustomer(customer.getId());
+		cstmr.setFName(customer.getFName());
+		cstmr.setLName(customer.getLName());
+	}
+
 }

@@ -65,6 +65,20 @@ public class TicketServiceImpl implements TicketService {
 	public List<Ticket> getByCustomer(@PathParam("customerid") int customerid) {
 		return ticketDAO.listByCustomer(customerid);
 	}
+	
+	@GET
+	@Override
+	@Path("/tickets/agent/{agentid}")
+	@Produces(MediaType.APPLICATION_JSON)
+	@ApiOperation( 
+		    value = "Find Ticket by Agent Id",
+		    notes = "This is where I can add implementation notes",
+		    response = Ticket.class, 
+			responseContainer = "List"
+		)
+	public List<Ticket> getByAgent(@PathParam("agentid") int agentid) {
+		return ticketDAO.listByAgent(agentid);
+	}
 
 	@Override
 	@DELETE
@@ -92,6 +106,20 @@ public class TicketServiceImpl implements TicketService {
 	public List<Ticket> getByCustomerUsername(@PathParam("username") String username) {
 		return ticketDAO.listByCustomerUsername(username);
 	}
+	
+	@GET
+	@Override
+	@Path("/tickets/agent/username/{username}")
+	@Produces(MediaType.APPLICATION_JSON)
+	@ApiOperation( 
+		    value = "Find Ticket by Agent Username",
+		    notes = "This is where I can add implementation notes",
+		    response = Ticket.class, 
+			responseContainer = "List"
+		)
+	public List<Ticket> getByAgentUsername(@PathParam("username") String username) {
+		return ticketDAO.listByAgentUsername(username);
+	}
 
 	@POST
 	@Path("/tickets/ticket")
@@ -103,7 +131,5 @@ public class TicketServiceImpl implements TicketService {
 		ticketDAO.createTicket(ticket);
 		
 	}
-	
-	
 
 }

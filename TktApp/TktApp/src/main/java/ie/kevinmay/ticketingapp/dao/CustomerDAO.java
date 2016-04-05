@@ -9,4 +9,5 @@ public interface CustomerDAO {
 	public Customer getCustomer(int id);
 	public void createCustomer(Customer customer);
 	public Customer getCustomerByAccount(int accountid);
+	public void updateCustomer(Customer customer);
 } 

@@ -5,6 +5,7 @@ import java.util.List;
 import javax.ws.rs.Consumes;
 import javax.ws.rs.GET;
 import javax.ws.rs.POST;
+import javax.ws.rs.PUT;
 import javax.ws.rs.Path;
 import javax.ws.rs.PathParam;
 import javax.ws.rs.Produces;
@@ -15,6 +16,7 @@ import org.springframework.stereotype.Component;
 
 import ie.kevinmay.ticketingapp.dao.AgentDAO;
 import ie.kevinmay.ticketingapp.model.Agent;
+import ie.kevinmay.ticketingapp.model.Customer;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
 
@@ -62,6 +64,28 @@ public class AgentServiceImpl implements AgentService {
     notes = "This is a test note for Customer")
 	public void createAgent(Agent agent) {
 		agentDAO.createAgent(agent);
+		
+	}
+
+	@PUT
+	@Path("/customers/customer")
+	@Consumes({MediaType.APPLICATION_JSON})
+	@Override
+	@ApiOperation(value = "Update Agent",
+    notes = "This is a test note for Customer")
+	public void updateAgent(Agent agent) {
+		agentDAO.updateAgent(agent);
+		
+	}
+
+	@GET
+	@Path("/agents/account/{accountid}")
+	@Produces(MediaType.APPLICATION_JSON)
+	@ApiOperation(value = "Get Agent by FK Account Id",
+    notes = "This is a test note for Agent",
+    response = Agent.class)
+	public Agent getAgentByAccount(@PathParam("accountid")int accountid) {
+		return agentDAO.getAgentByAccount(accountid);
 		
 	}
 }

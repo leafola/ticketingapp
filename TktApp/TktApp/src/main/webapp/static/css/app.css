@@ -1,6 +1,10 @@
+html {
+	overflow-y: scroll;
+}
+
 body, #mainWrapper {
 	height: 70%;
-	background-color: rgb(245, 245, 245);
+	background-color: #F5F5F5;
 }
 
 body, .form-control {
@@ -29,7 +33,6 @@ body, .form-control {
 	width: 96%;
 	margin-left: 20px;
 	margin-top: 20px;
-	margin-bottom: 20px;
 	padding: 20px;
 	background-color: #EAE7E7;
 	border: 1px solid #ddd;
@@ -63,4 +66,77 @@ body, .form-control {
 	margin-left: 50px;
 	border-radius: 25px;
 	background: #aa3355;
+}
+
+.list-group {
+	margin-bottom: 1px;
+}
+
+.list-group-item {
+	padding: 5px 10px;
+}
+
+a.list-group-item:hover {
+	text-decoration: none;
+	color: #555555;
+	background-color: orange;
+}
+
+a.list-group-item:focus {
+	text-decoration: none;
+	color: #555555;
+	background-color: pink;
+}
+
+.panel>.panel-heading {
+	background-image: none;
+	background-color: #3B5998;
+	color: white;
+}
+
+.btn-primary {
+	color: #333;
+	background-color: #FFFFFF;
+	border-color: #666666;
+	text-align: left;
+}
+
+.btn-primary:hover {
+	color: #333;
+	background-color: #dfe3ee;
+	border-color: #666666;
+}
+
+.btn-primary:focus, .btn-primary:active:focus, .btn-primary.active:hover,
+	.btn-primary.active:focus, .btn-primary:active, .btn-primary.active {
+	color: #333;
+	background-color: #8b9dc3;
+	border-color: #666666;
+}
+
+.btn-default:focus, .btn-default.active:hover, .btn-default.active:focus,
+	.btn-default:active, .btn-default.active {
+	background-color: #fff;
+}
+
+.custom-width1 {
+	width: 70px !important;
+}
+
+.custom-width2 {
+	width: 60px !important;
+	height: 30px !important;
+}
+
+.custom-width3 {
+	width: 100px !important;
+}
+
+.glyphicon {
+	/*font-size: 18px;*/
+	margin: 10px;
+}
+
+.glyphicon-refresh {
+	margin: 3px;
 }

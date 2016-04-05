@@ -1,7 +1,6 @@
 package ie.kevinmay.ticketingapp.dao;
 
 import java.util.ArrayList;
-import java.util.Collections;
 import java.util.List;
 import java.util.Random;
 
@@ -67,12 +66,26 @@ public class TicketDAOImpl implements TicketDAO {
 		List<Ticket> tickets = (List<Ticket>) query.getResultList();
 		return tickets;
 	}
+	
+	@Override
+	public List<Ticket> listByAgent(int id) {
+		Query query = entityManager.createQuery(SELECT_QUERY + " where t.agentId = :id").setParameter("id", id);
+		List<Ticket> tickets = (List<Ticket>) query.getResultList();
+		return tickets;
+	}
 
 	@Override
 	public List<Ticket> listByCustomerUsername(String username) {
 		Account account = accountDAO.getAccountByUsername(username);
 		Customer customer = customerDAO.getCustomerByAccount(account.getId());
 		return listByCustomer(customer.getId());
+	}
+	
+	@Override
+	public List<Ticket> listByAgentUsername(String username) {
+		Account account = accountDAO.getAccountByUsername(username);
+		Agent agent = agentDAO.getAgentByAccount(account.getId());
+		return listByAgent(agent.getId());
 	}
 
 	@Override

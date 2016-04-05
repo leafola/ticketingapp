@@ -8,4 +8,6 @@ public interface AgentDAO {
 	public List<Agent> list();
 	public Agent getAgent(int id);
 	public void createAgent(Agent agent);
+	public Agent getAgentByAccount(int id);
+	public void updateAgent(Agent agent);
 } 
