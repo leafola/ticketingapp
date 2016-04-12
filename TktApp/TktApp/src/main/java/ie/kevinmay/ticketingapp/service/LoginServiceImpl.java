@@ -77,6 +77,8 @@ public class LoginServiceImpl implements UserDetailsService {
 	            roles.add("ROLE_ADMIN");
 	        } else if (role.equals("ROLE_USER")) {
 	            roles.add("ROLE_USER");
+	        } else if (role.equals("ROLE_SUPER")) {
+	            roles.add("ROLE_SUPER");
 	        }
 	        return roles;
 	    }

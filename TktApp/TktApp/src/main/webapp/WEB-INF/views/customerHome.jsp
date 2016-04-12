@@ -17,6 +17,9 @@
 <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
 <link href="<c:url value='/static/css/app.css' />" rel="stylesheet"></link>
 <style>
+.label {
+	border: 2px solid #dfe3ee;
+}
 </style>
 </head>
 <body ng-app="myApp" class="ng-cloak">
@@ -29,7 +32,7 @@
 						<div class="row">
 							<div class="col-sm-8">
 								<h5>
-									<strong>Customer Account:</strong> {{ customer.fname }} {{
+									<span class="label label-default">Customer Account:</span> {{ customer.fname }} {{
 									customer.lname }}
 								</h5>
 							</div>
@@ -154,7 +157,7 @@
 						</div>
 						<div class="list-group"
 							ng-repeat="p in posts | orderBy:'dateCreated':true">
-							<div ng-style="setConversationClass(p.author)">
+							<div class="conversation" ng-style="setConversationClass(p.author)">
 								<p class="list-group-item-text"
 									ng-bind="p.authorName + ' wrote on ' + p.dateCreated"></p>
 								<h5 class="list-group-item-heading" ng-bind="p.body"></h5>

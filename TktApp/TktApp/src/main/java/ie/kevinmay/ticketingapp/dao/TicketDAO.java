@@ -17,5 +17,6 @@ public interface TicketDAO {
 	public List<Ticket> listByCustomerUsername(String username);
 	public List<Ticket> listByAgentUsername(String username);
 	public void createTicket(Ticket ticket);
+	public void updateTicket(Ticket ticket);
 
 }

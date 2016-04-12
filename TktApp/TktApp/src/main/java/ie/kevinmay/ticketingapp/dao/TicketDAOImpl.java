@@ -124,4 +124,12 @@ public class TicketDAOImpl implements TicketDAO {
 
 	}
 
+	@Override
+	@Transactional
+	public void updateTicket(Ticket ticket) {
+		Ticket tkt = getTicket(ticket.getId());
+		tkt.setClosed(ticket.getClosed());
+		
+	}
+
 }

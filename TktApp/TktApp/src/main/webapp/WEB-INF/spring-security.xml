@@ -15,7 +15,8 @@
 		<intercept-url pattern="/web/swagger/**" access="permitAll" />
 		<intercept-url pattern="/web/customer/**" access="hasRole('ROLE_USER')" />
 		<intercept-url pattern="/web/agent/**" access="hasRole('ROLE_ADMIN')" />
-		<intercept-url pattern="/**" access="hasAnyRole('ROLE_USER','ROLE_ADMIN')" />
+		<intercept-url pattern="/web/super/**" access="hasRole('ROLE_SUPER')" />
+		<intercept-url pattern="/**" access="hasAnyRole('ROLE_USER','ROLE_ADMIN','ROLE_SUPER')" />
 
 		<form-login login-processing-url="/j_spring_security_check"
 			login-page="/web/login" authentication-failure-url="/web/login?error"

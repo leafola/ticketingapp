@@ -14,5 +14,6 @@ public interface TicketService {
 	public List<Ticket> getByCustomerUsername(String username);
 	public List<Ticket> getByAgentUsername(String username);
 	public void createTicket(Ticket ticket);
+	public void updateTicket(Ticket ticket);
 	
 }

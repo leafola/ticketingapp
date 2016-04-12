@@ -91,6 +91,18 @@ public class LoginController {
 		}
 		return new ModelAndView("agentHome", "username", username);
 	}
+	
+	@RequestMapping(value = "/super/home", method = RequestMethod.GET)
+	public ModelAndView getSuperHome() {
+		String username;
+		Object principal = SecurityContextHolder.getContext().getAuthentication().getPrincipal();
+		if (principal instanceof UserDetails) {
+			username = ((UserDetails) principal).getUsername();
+		} else {
+			username = principal.toString();
+		}
+		return new ModelAndView("superHome", "username", username);
+	}
 
 	@RequestMapping(value = "getLoggedInUser", method = RequestMethod.GET)
 	@ResponseBody

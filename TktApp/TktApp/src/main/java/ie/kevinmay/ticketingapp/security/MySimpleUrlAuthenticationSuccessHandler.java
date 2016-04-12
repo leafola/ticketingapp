@@ -20,7 +20,7 @@ public class MySimpleUrlAuthenticationSuccessHandler implements AuthenticationSu
 	
 	protected final Log logger = LogFactory.getLog(this.getClass());
 	private RedirectStrategy redirectStrategy = new DefaultRedirectStrategy();
-
+	
 	@Override
 	public void onAuthenticationSuccess(HttpServletRequest request, HttpServletResponse response, Authentication authentication)
 			throws IOException{
@@ -43,6 +43,7 @@ public class MySimpleUrlAuthenticationSuccessHandler implements AuthenticationSu
 	 protected String determineTargetUrl(Authentication authentication) {
 	        boolean isUser = false;
 	        boolean isAdmin = false;
+	        boolean isSuper = false;
 	        Collection<? extends GrantedAuthority> authorities = authentication.getAuthorities();
 	        for (GrantedAuthority grantedAuthority : authorities) {
 	            if (grantedAuthority.getAuthority().equals("ROLE_USER")) {
@@ -51,6 +52,9 @@ public class MySimpleUrlAuthenticationSuccessHandler implements AuthenticationSu
 	            } else if (grantedAuthority.getAuthority().equals("ROLE_ADMIN")) {
 	                isAdmin = true;
 	                break;
+	            } else if (grantedAuthority.getAuthority().equals("ROLE_SUPER")) {
+	                isSuper = true;
+	                break;
 	            }
 	        }
 	 
@@ -58,6 +62,8 @@ public class MySimpleUrlAuthenticationSuccessHandler implements AuthenticationSu
 	            return "/web/customer/home";
 	        } else if (isAdmin) {
 	            return "/web/agent/home";
+	        } else if (isSuper) {
+	            return "/web/super/home";
 	        } else {
 	            throw new IllegalStateException();
 	        }
