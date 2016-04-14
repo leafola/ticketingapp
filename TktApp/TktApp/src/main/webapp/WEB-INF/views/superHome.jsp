@@ -11,11 +11,11 @@
 
 <meta name="viewport" content="width=device-width, initial-scale=1">
 
-<script
-	src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.4/angular.js"></script>
-<script
-	src="https://cdnjs.cloudflare.com/ajax/libs/angular-ui-bootstrap/0.12.0/ui-bootstrap.js"></script>
+<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.4/angular.js"></script>
 <script src="<c:url value='/static/js/app.js' />"></script>
+<script src="/web/lib/metawidget/core/metawidget-core.min.js" type="text/javascript"></script>
+<script src="/web/lib/metawidget/angular/metawidget-angular.min.js" type="text/javascript"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/angular-ui-bootstrap/0.12.0/ui-bootstrap.js"></script>
 
 <link rel="stylesheet"
 	href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
@@ -45,10 +45,13 @@
 							<div class="col-sm-4 text-right">
 								<button type="button"
 									class="btn btn-default btn-sm custom-width1"
-									ng-click="showAccountDetailsFunc()">Accounts</button>
+									ng-click="showAdminAccountFunc()">Accounts</button>
 								<button type="button"
 									class="btn btn-default btn-sm custom-width1"
-									ng-click="showAllTicketsFunc()">Tickets</button>
+									ng-click="showAdminTicketsFunc()">Tickets</button>
+									<button type="button"
+									class="btn btn-default btn-sm custom-width1"
+									ng-click="showMetaWidgetFunc()">MetaW.</button>
 								<a href="http://localhost:8080/j_spring_security_logout"
 									class="btn btn-default btn-sm custom-width1" role="button">Logout</a>
 							</div>
@@ -58,7 +61,7 @@
 			</div>
 		</div>
 		<div class="row">
-			<div class="col-sm-12" ng-show="!showAccountDetails">
+			<div class="col-sm-12" ng-show="showAdminTickets">
 				<div class="panel panel-default">
 					<div class="panel-heading ">
 						<div class="row">
@@ -92,7 +95,22 @@
 					</div>
 				</div>
 			</div>
-			<div class="col-sm-2" ng-show="showAccountDetails">
+			<div class="col-sm-12" ng-show="showAdminMeta">
+				<div class="panel panel-default">
+					<div class="panel-heading ">
+						<div class="row">
+							<div class="col-sm-8">
+								<span class="glyphicon glyphicon-folder-open"></span>MetaWidget Example
+							</div>
+						</div>
+					</div>
+					<div class="panel-body">
+					<span class="pull-left"><metawidget ng-model="metaTicket"></span>
+						<div style="margin-left: 500px;"><code>&lt;metawidget ng-model="metaTicket" &gt;</code></div>
+					</div>
+				</div>
+			</div>
+			<div class="col-sm-2" ng-show="showAdminAccounts">
 				<div class="panel panel-default">
 					<div class="panel-heading ">
 						<span class="glyphicon glyphicon-user"></span>Create Account
@@ -127,7 +145,7 @@
 				</div>
 
 			</div>
-			<div class="col-sm-10" ng-show="showAccountDetails">
+			<div class="col-sm-10" ng-show="showAdminAccounts">
 				<div class="panel panel-default">
 					<div class="panel-heading ">
 						<div class="row">

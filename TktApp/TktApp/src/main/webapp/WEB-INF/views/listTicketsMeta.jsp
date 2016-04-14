@@ -46,8 +46,9 @@
 			<div class="panel-heading">
 				<span class="lead">List of Tickets </span>
 			</div>
-			<div class="tablecontainer">
-				<metawidget ng-model="ticket" read-only="readOnly">
+			<div class="tablecontainer" ng-repeat="t in tickets">
+			
+				<metawidget ng-model="t" read-only="readOnly">
 			</div>
 		</div>
 	</div>
@@ -57,7 +58,6 @@
 		src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.4/angular.js"></script>
 	<script src="<c:url value='/static/js/app.js' />"></script>
 	<script src="<c:url value='/static/js/service/ticket_service.js' />"></script>
-	<script
-		src="<c:url value='/static/js/controller/ticket_controller.js' />"></script>
+	<script src="<c:url value='/static/js/controller/ticket_controller.js' />"></script>
 </body>
 </html>

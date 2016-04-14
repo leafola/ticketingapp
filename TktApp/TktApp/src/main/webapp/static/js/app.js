@@ -1,4 +1,4 @@
-var myApp = angular.module('myApp', [ 'ui.bootstrap' ]);
+var myApp = angular.module('myApp', [ 'metawidget', 'ui.bootstrap']);
 
 myApp
 		.factory(
@@ -45,6 +45,9 @@ myApp
 					$scope.showImage = true;
 					$scope.showPosts = false;
 					$scope.showArchive = false;
+					$scope.showAdminTickets = false;
+					$scope.showAdminAccounts = true;
+					$scope.showAdminMeta = false;
 					
 					
 					// Show and Hide Functions
@@ -85,6 +88,30 @@ myApp
 						$scope.showArchive = true;
 						$scope.selectTopTicket(true);
 					};
+					
+					// Show MetaWidget
+					$scope.showMetaWidgetFunc = function() {
+						$log.debug("Calling ShowMetaWidgetFunc");
+						$scope.showAdminTickets = false;
+						$scope.showAdminAccounts = false;
+						$scope.showAdminMeta = true;
+						
+					}
+					
+					$scope.showAdminAccountFunc = function() {
+						$log.debug("Calling ShowAdminAccountFunc");
+						$scope.showAdminTickets = false;
+						$scope.showAdminAccounts = true;
+						$scope.showAdminMeta = false;
+						
+					}
+					
+					$scope.showAdminTicketsFunc = function() {
+						$log.debug("Calling ShowAdminTicketsFunc");
+						$scope.showAdminTickets = true;
+						$scope.showAdminAccounts = false;
+						$scope.showAdminMeta = false;
+					}
 					
 					// Select top ticket so that it is highlighted with correct colour
 					$scope.selectTopTicket = function(answer) {
@@ -322,12 +349,18 @@ myApp
 									'http://localhost:8080/rest/ticketservice/tickets').success(
 									function(d) {
 										$scope.tickets = d;
+										$scope.metaTicket = $scope.tickets[0];
 									}).error(function(data, status) {
 
 								console.log(data);
 
 							});
 						};
+						
+						// Get MetaWidget Ticket
+						self.getMetaTicket = function() {
+							$scope.ticket = $scope.tickets[0];
+						}
 					
 					// Get Tickets by Customer or Agent
 					self.getTickets = function() {

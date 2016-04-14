@@ -11,11 +11,11 @@
 
 <meta name="viewport" content="width=device-width, initial-scale=1">
 
-<script
-	src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.4/angular.js"></script>
-<script
-	src="https://cdnjs.cloudflare.com/ajax/libs/angular-ui-bootstrap/0.12.0/ui-bootstrap.js"></script>
+<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.4/angular.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/angular-ui-bootstrap/0.12.0/ui-bootstrap.js"></script>
 <script src="<c:url value='/static/js/app.js' />"></script>
+<script src="/web/lib/metawidget/core/metawidget-core.min.js" type="text/javascript"></script>
+<script src="/web/lib/metawidget/angular/metawidget-angular.min.js" type="text/javascript"></script>
 
 <link rel="stylesheet"
 	href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
