@@ -2,6 +2,7 @@ package ie.kevinmay.ticketingapp.service;
 
 import java.util.List;
 
+import javax.persistence.PersistenceException;
 import javax.ws.rs.Consumes;
 import javax.ws.rs.GET;
 import javax.ws.rs.POST;
@@ -11,10 +12,14 @@ import javax.ws.rs.PathParam;
 import javax.ws.rs.Produces;
 import javax.ws.rs.core.MediaType;
 
+import org.hibernate.exception.ConstraintViolationException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.stereotype.Component;
+import org.springframework.transaction.TransactionSystemException;
+
+import com.mysql.jdbc.exceptions.jdbc4.MySQLIntegrityConstraintViolationException;
 
 import ie.kevinmay.ticketingapp.dao.AccountDAO;
 import ie.kevinmay.ticketingapp.model.Account;
@@ -51,7 +56,7 @@ public class AccountServiceImpl implements AccountService {
 	@ApiOperation(value = "Create new Account",
     notes = "This is a test note for Customer")
 	public void createAccount(Account account) {
-		accountDAO.createAccount(account.getUsername(), account.getPassword(), account.getRole());
+			accountDAO.createAccount(account.getUsername(), account.getPassword(), account.getRole());
 	}
 
 	@Override

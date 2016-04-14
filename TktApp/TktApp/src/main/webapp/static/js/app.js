@@ -54,6 +54,8 @@ myApp
 					
 					// Show account details section
 					$scope.showAccountDetailsFunc = function() {
+						$log.debug("Calling showAccountDetailsFunc");
+						
 						$scope.showAccountDetails = true;
 						$scope.showImage = true;
 						$scope.showPosts = false;
@@ -61,6 +63,7 @@ myApp
 					
 					// Show the tickets section
 					$scope.showTicketsFunc = function() {
+						$log.debug("Calling showTicketsFunc");
 						$scope.showAccountDetails = false;
 						$scope.checkForTickets();
 						$scope.showArchive = false;
@@ -69,12 +72,14 @@ myApp
 					
 					// Show all tickets function
 					$scope.showAllTicketsFunc = function() {
+						$log.debug("Calling showAllTicketsFunc");
 						$scope.showAccountDetails = false;
 						self.getAllTickets();
 					};
 					
 					// Show Archive section
 					$scope.showArchiveFunc = function() {
+						$log.debug("Calling showArchiveFunc");
 						$scope.showAccountDetails = false;
 						$scope.checkForTickets();
 						$scope.showArchive = true;
@@ -83,6 +88,7 @@ myApp
 					
 					// Select top ticket so that it is highlighted with correct colour
 					$scope.selectTopTicket = function(answer) {
+						$log.debug("Calling selectTopTicket()");
 						for (i=0;i<$scope.tickets.length;i++){
 							if ($scope.tickets[i].closed === answer){
 								$scope.selected = $scope.tickets[i];
@@ -95,12 +101,14 @@ myApp
 					
 					// Show the edit account details section
 					$scope.showEditFunc = function() {
+						$log.debug("Calling showEditFunc");
 						$scope.showEdit = !$scope.showEdit;
 					};
 					
 					
 					// Check if ticket status is open or closed
 					$scope.checkStatus = function(status) {
+						$log.debug("Calling checkStatus()");
 						if (status) {
 							return 'closed';
 						} else {
@@ -111,6 +119,7 @@ myApp
 					
 					// Check if this is users first ever post
 					$scope.checkIfFirstEverPost = function() {
+						$log.debug("Calling checkIfFirstEverPost");
 						if ($scope.tickets.length === 1
 								&& $scope.posts.length === 0) {
 							$scope.firstEverPost = true;
@@ -121,6 +130,7 @@ myApp
 					
 					// Check if user has submitted a new post
 					$scope.postSentFunc = function() {
+						$log.debug("Calling postSentFunc");
 						if ($scope.posts.length >= 1
 								&& $scope.posts[$scope.posts.length - 1].author === $scope.account.id) {
 							console.log("Account id = " + $scope.account.id);
@@ -135,6 +145,7 @@ myApp
 					
 					// Check if the user has any tickets created yet. Show and Hide depending on result
 					$scope.checkForTickets = function() {
+						$log.debug("Calling checkForTickets()");
 						if ($scope.tickets.length === 0) {
 							$scope.noTickets = true;
 							$scope.showImage = true;
@@ -156,6 +167,7 @@ myApp
 					
 					// Check if the user has any posts yet. Show/Hide text entry box based on result
 					$scope.checkForPosts = function() {
+						$log.debug("Calling checkForPosts");
 						if ($scope.posts.length === 0) {
 							$scope.isCollapsed = false;
 						} else {
@@ -166,6 +178,7 @@ myApp
 					
 					// Function to change isCollapsed value to false
 					$scope.changeIsCollapsed = function() {
+						$log.debug("Calling changeIsCollapsed()");
 						$scope.isCollapsed = false;
 					};
 					
@@ -182,17 +195,20 @@ myApp
 					
 					// Function to make ticket item selected on click.
 					$scope.select = function(item) {
+						$log.debug("Calling select()");
 						$scope.selected = item;
 						console.log($scope.selected);
 					};
 					
 					// Function to return boolean based on wheter passed item is equal to selected item
 					$scope.isActive = function(item) {
+						$log.debug("Calling isActive()");
 						return $scope.selected === item;
 					};
 					
 					// Function for setting conversation bubble colours
 					$scope.setConversationClass = function(authorId) {
+						$log.debug("Calling setConversationClass");
 							if (authorId == $scope.account.id) {
 								return {
 									"margin-right": "50px",
@@ -211,10 +227,10 @@ myApp
 					
 					// Console Feedback
 					$log.debug("showEdit: " + $scope.showEdit);
-					$log.info("showAccountDetails: "
+					$log.debug("showAccountDetails: "
 							+ $scope.showAccountDetails);
-					$log.warn("showImage: " + $scope.showImage);
-					$log.error("showPosts: " + $scope.showPosts);
+					$log.debug("showImage: " + $scope.showImage);
+					$log.debug("showPosts: " + $scope.showPosts);
 					
 					// ***********************************************************
 					// Model OBJECTS *********************************************
@@ -262,13 +278,14 @@ myApp
 					
 					// Get Logged In User (Spring Security Request)
 					self.getLoggedInUser = function() {
+						$log.debug("Calling getLoggedInUser()");
 						getUser.getLoggedInUser().success(function(account) {
 							$scope.account = account;
 							console.log($scope.account.id);
 							
-							if($scope.account.role = "ROLE_SUPER"){
+							if($scope.account.role === "ROLE_SUPER"){
 								self.getAllAccounts();
-								self.geAllTickets();
+								self.getAllTickets();
 							} else {
 							self.getTickets();
 							self.getCustomer();
@@ -300,6 +317,7 @@ myApp
 					
 					// Get All Tickets
 					self.getAllTickets = function() {
+						$log.debug("Calling getAllTickets()");
 							$http.get(
 									'http://localhost:8080/rest/ticketservice/tickets').success(
 									function(d) {
@@ -313,6 +331,7 @@ myApp
 					
 					// Get Tickets by Customer or Agent
 					self.getTickets = function() {
+						$log.debug("Calling getTickets()");
 						if ($scope.account.role === "ROLE_USER") {
 							$scope.getCustomerTickets();
 						} else {
@@ -322,6 +341,7 @@ myApp
 					
 					// Get Tickets by Customer Username
 					$scope.getCustomerTickets = function() {
+						$log.debug("Calling getCustomerTickets");
 						$http
 								.get(
 										'http://localhost:8080/rest/ticketservice/tickets/customer/username/'
@@ -348,6 +368,7 @@ myApp
 					
 					// Get Tickets by Agent username
 					$scope.getAgentTickets = function() {
+						$log.debug("Calling getAgentTickets()");
 						$http
 								.get(
 										'http://localhost:8080/rest/ticketservice/tickets/agent/username/'
@@ -373,6 +394,7 @@ myApp
 
 					// Create Ticket
 					self.createTicket = function(title) {
+						$log.debug("Calling createTicket()");
 						self.ticket.title = title;
 						self.ticket.customerId = $scope.customer.id;
 						$http
@@ -393,6 +415,7 @@ myApp
 					
 					// Update Ticket 
 					self.updateTicket = function(t) {
+						$log.debug("Calling updateTicket()");
 						$scope.selectTopTicket(!t.closed);
 						console.log("Ticket: " + t.title);
 						$http.put('http://localhost:8080/rest/ticketservice/tickets/ticket/', t)
@@ -411,6 +434,7 @@ myApp
 					
 					// Delete Ticket
 					self.deleteTicket = function(id) {
+						$log.debug("Calling deleteTicket()");
 
 						// ['delete'] in square brackets because eclipse was
 						// giving a syntax
@@ -431,6 +455,7 @@ myApp
 					
 					// Get Customer
 					self.getCustomer = function() {
+						$log.debug("Calling getCustomer()");
 						$http.get(
 								'http://localhost:8080/rest/customerservice/customers/account/'
 										+ $scope.account.id).success(
@@ -445,6 +470,7 @@ myApp
 					
 					// Update Customer
 					self.updateCustomer = function() {
+						$log.debug("Calling updateCustomer()");
 						$http
 								.put(
 										'http://localhost:8080/rest/customerservice/customers/customer/',
@@ -460,6 +486,7 @@ myApp
 					
 					// Get Agent
 					self.getAgent = function() {
+						$log.debug("Calling getAgent()");
 						$http.get(
 								'http://localhost:8080/rest/agentservice/agents/account/'
 										+ $scope.account.id).success(
@@ -474,6 +501,7 @@ myApp
 
 					// Update Agent
 					self.updateAgent = function() {
+						$log.debug("Calling updateAgent()");
 						$http
 								.put(
 										'http://localhost:8080/rest/agentservice/agents/agent/',
@@ -489,6 +517,7 @@ myApp
 					
 					// Refresh Posts
 					self.refreshPosts = function() {
+						$log.debug("Calling refreshPosts()");
 						$http.get(
 								'http://localhost:8080/rest/postservice/posts/ticket/'
 										+ $scope.post.ticketId).success(
@@ -503,6 +532,7 @@ myApp
 
 					// Get Posts
 					self.getPosts = function(id, title) {
+						$log.debug("Calling getPosts()");
 						$scope.postTitle = title;
 						self.post.ticketId = id;
 						$http.get(
@@ -523,6 +553,7 @@ myApp
 					
 					// Create Post
 					self.createPost = function(body) {
+						$log.debug("Calling createPost");
 						self.post.body = body;
 						self.post.author = $scope.account.id;
 
@@ -553,6 +584,7 @@ myApp
 					
 					// Register New Account
 					self.register = function(username, password) {
+						$log.debug("Calling register()");
 						self.account.username = username;
 						self.account.role = 'ROLE_USER';
 						self.account.password = password;
@@ -570,6 +602,7 @@ myApp
 					};
 					
 					self.getAllAccounts = function() {
+						$log.debug("Calling getAllAccounts()");
 						$http
 								.get(
 										'http://localhost:8080/rest/accountservice/accounts').success(
@@ -584,6 +617,7 @@ myApp
 					};
 					
 					self.createAccount = function(username, password, role) {
+						$log.debug("Calling createAccount()");
 						tempAcc = new account(username,password,role);
 						$http
 								.post(

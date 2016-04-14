@@ -4,12 +4,16 @@ import java.util.List;
 
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
+import javax.persistence.PersistenceException;
 import javax.persistence.Query;
 
 import ie.kevinmay.ticketingapp.model.Account;
 
+import org.hibernate.exception.ConstraintViolationException;
 import org.springframework.stereotype.Repository;
 import org.springframework.transaction.annotation.Transactional;
+
+import com.mysql.jdbc.exceptions.jdbc4.MySQLIntegrityConstraintViolationException;
 
 /**
  * An implementation of the ticketDAO interface.
@@ -40,9 +44,9 @@ public class AccountDAOImpl implements AccountDAO {
 
 	@Override
 	@Transactional
-	public void createAccount(String username, String pword, String role) {
+	public void createAccount(String username, String pword, String role){
 		Account account = new Account(username, pword, role);
-		entityManager.persist(account);
+			entityManager.persist(account);
 		
 	}
 
