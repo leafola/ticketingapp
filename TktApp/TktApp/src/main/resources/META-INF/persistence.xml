@@ -3,12 +3,12 @@
 		xsi:schemaLocation="http://java.sun.com/xml/ns/persistence http://java.sun.com/xml/ns/persistence/persistence_1_0.xsd"
 		version="1.0">
 
-	<persistence-unit name="testa" transaction-type="RESOURCE_LOCAL">
+	<persistence-unit name="mainPersistenceUnit" transaction-type="RESOURCE_LOCAL">
         <class>ie.kevinmay.ticketingapp.model.Customer;</class>
         <class>ie.kevinmay.ticketingapp.model.Ticket;</class>
         <class>ie.kevinmay.ticketingapp.model.Post;</class>
         <class>ie.kevinmay.ticketingapp.model.Agent;</class>
         <class>ie.kevinmay.ticketingapp.model.Account;</class>
     </persistence-unit>
-
+    
 </persistence>

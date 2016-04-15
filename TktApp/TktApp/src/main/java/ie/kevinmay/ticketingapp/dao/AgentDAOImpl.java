@@ -10,7 +10,6 @@ import org.springframework.stereotype.Repository;
 import org.springframework.transaction.annotation.Transactional;
 
 import ie.kevinmay.ticketingapp.model.Agent;
-import ie.kevinmay.ticketingapp.model.Customer;
 
 @Repository("agentDAO")
 public class AgentDAOImpl implements AgentDAO {

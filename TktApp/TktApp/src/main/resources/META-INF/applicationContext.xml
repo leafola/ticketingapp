@@ -9,11 +9,10 @@
 			http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context-2.5.xsd
 			http://www.springframework.org/schema/jee http://www.springframework.org/schema/jee/spring-jee-2.5.xsd
 			http://www.springframework.org/schema/tx http://www.springframework.org/schema/tx/spring-tx-2.5.xsd">
-	<!-- Scan for both Jersey Rest Annotations a -->
+	<!-- Scan for  Jersey Rest Annotations -->
 	<!-- scans packages to find and register beans within the application context -->
-	<context:component-scan use-default-filters="true"
-        base-package="ie.kevinmay.ticketingapp">
-        <context:exclude-filter type="annotation" expression="org.springframework.stereotype.Controller"/>
+	<context:component-scan use-default-filters="true" base-package="ie.kevinmay.ticketingapp">
+    <context:exclude-filter type="annotation" expression="org.springframework.stereotype.Controller"/>
     </context:component-scan>
 
 	<context:annotation-config />

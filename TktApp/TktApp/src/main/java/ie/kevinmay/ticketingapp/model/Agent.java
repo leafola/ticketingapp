@@ -15,7 +15,7 @@ public class Agent {
 
 	@Id 
 	@GeneratedValue
-	@Column(name = "agent_id")
+	@Column(name = "agent_id") 
 	private int id;
 	
 	@Column(name= "f_name")

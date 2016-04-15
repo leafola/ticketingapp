@@ -6,6 +6,7 @@ import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
 import javax.persistence.PersistenceException;
 import javax.persistence.Query;
+import javax.persistence.TypedQuery;
 
 import ie.kevinmay.ticketingapp.model.Account;
 
@@ -35,10 +36,9 @@ public class AccountDAOImpl implements AccountDAO {
 
 	@Override
 	@Transactional
-	@SuppressWarnings("unchecked")
 	public List<Account> listAccounts() {
-		Query query = entityManager.createQuery(SELECT_QUERY);
-		List<Account> accounts = (List<Account>) query.getResultList();
+		TypedQuery<Account> query = entityManager.createQuery(SELECT_QUERY, Account.class);
+		List<Account> accounts = query.getResultList();
 		return accounts;
 	}
 
