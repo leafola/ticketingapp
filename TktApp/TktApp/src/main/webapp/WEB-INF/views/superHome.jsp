@@ -11,11 +11,15 @@
 
 <meta name="viewport" content="width=device-width, initial-scale=1">
 
-<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.4/angular.js"></script>
+<script
+	src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.4/angular.js"></script>
+<script
+	src="https://cdnjs.cloudflare.com/ajax/libs/angular-ui-bootstrap/0.12.0/ui-bootstrap.js"></script>
+<script src="/web/lib/metawidget/core/metawidget-core.min.js"
+	type="text/javascript"></script>
+<script src="/web/lib/metawidget/angular/metawidget-angular.min.js"
+	type="text/javascript"></script>
 <script src="<c:url value='/static/js/app.js' />"></script>
-<script src="/web/lib/metawidget/core/metawidget-core.min.js" type="text/javascript"></script>
-<script src="/web/lib/metawidget/angular/metawidget-angular.min.js" type="text/javascript"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/angular-ui-bootstrap/0.12.0/ui-bootstrap.js"></script>
 
 <link rel="stylesheet"
 	href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
@@ -25,6 +29,10 @@
 	font-size: 14;
 	background: none;
 	border: 2px solid #9989cf;
+}
+
+td {
+    padding: 15px;
 }
 </style>
 </head>
@@ -49,7 +57,7 @@
 								<button type="button"
 									class="btn btn-default btn-sm custom-width1"
 									ng-click="showAdminTicketsFunc()">Tickets</button>
-									<button type="button"
+								<button type="button"
 									class="btn btn-default btn-sm custom-width1"
 									ng-click="showMetaWidgetFunc()">MetaW.</button>
 								<a href="http://localhost:8080/j_spring_security_logout"
@@ -100,13 +108,36 @@
 					<div class="panel-heading ">
 						<div class="row">
 							<div class="col-sm-8">
-								<span class="glyphicon glyphicon-folder-open"></span>MetaWidget Example
+								<span class="glyphicon glyphicon-folder-open"></span>MetaWidget
+								Example
 							</div>
 						</div>
 					</div>
 					<div class="panel-body">
-					<span class="pull-left"><metawidget ng-model="metaTicket"></span>
-						<div style="margin-left: 500px;"><code>&lt;metawidget ng-model="metaTicket" &gt;</code></div>
+						<span class="pull-left"><metawidget ng-model="metaTicket"></span>
+						<div style="margin-left: 300px;">
+							<table border="1">
+								<tr>
+									<td>MetaWidget Code Required:</td>
+									<td><code>&lt;metawidget ng-model="ticket" &gt;</code></td>
+								</tr>
+								<tr>
+									<td>Conventional Code Required:</td>
+									<td><code>
+											Id: &lt;input type="text" ng-model="ticket.id"&gt;&lt;br/&gt;<br />
+											Title: &lt;input type="text"
+											ng-model="ticket.title"&gt;&lt;br/&gt; <br /> Date Created:
+											&lt;input type="date"
+											ng-model="ticket.dateCreated"&gt;&lt;br/&gt; <br /> Customer
+											Id &lt;input type="number"
+											ng-model="ticket.customerId"&gt;&lt;br/&gt; <br /> Agent Id:
+											&lt;input type="number"
+											ng-model="ticket.agentId"&gt;&lt;br/&gt; <br /> Closed:
+											&lt;input type="checkbox"
+											ng-model="ticket.closed"&gt;&lt;br/&gt;
+										</code></td>
+							</table>
+						</div>
 					</div>
 				</div>
 			</div>

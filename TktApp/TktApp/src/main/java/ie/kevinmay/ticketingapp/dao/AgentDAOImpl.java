@@ -5,6 +5,7 @@ import java.util.List;
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
 import javax.persistence.Query;
+import javax.persistence.TypedQuery;
 
 import org.springframework.stereotype.Repository;
 import org.springframework.transaction.annotation.Transactional;
@@ -56,8 +57,8 @@ public class AgentDAOImpl implements AgentDAO {
 	@Override
 	public Agent getAgentByAccount(int id) {
 		Agent agent = new Agent();
-		Query query = entityManager.createQuery(SELECT_QUERY);
-		List<Agent> agents = (List<Agent>) query.getResultList();
+		TypedQuery<Agent> query = entityManager.createQuery(SELECT_QUERY, Agent.class);
+		List<Agent> agents = query.getResultList();
 		for (Agent gnt : agents){
 			if (gnt.getAccountId() == id){
 				agent = gnt;

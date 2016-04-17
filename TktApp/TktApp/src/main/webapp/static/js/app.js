@@ -1,4 +1,4 @@
-var myApp = angular.module('myApp', [ 'metawidget', 'ui.bootstrap']);
+var myApp = angular.module('myApp', ['metawidget','ui.bootstrap']);
 
 myApp
 		.factory(
@@ -15,7 +15,7 @@ myApp
 myApp
 		.controller(
 				'mainController',
-				function($scope, $http, getUser, $log) {
+				function mainController($scope, $http, getUser, $log) {
 					
 					// Global variable for $scope reference within other functions
 					var self = this;

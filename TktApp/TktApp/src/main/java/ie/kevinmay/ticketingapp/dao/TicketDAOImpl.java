@@ -7,6 +7,7 @@ import java.util.Random;
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
 import javax.persistence.Query;
+import javax.persistence.TypedQuery;
 
 import ie.kevinmay.ticketingapp.model.Account;
 import ie.kevinmay.ticketingapp.model.Agent;
@@ -69,8 +70,8 @@ public class TicketDAOImpl implements TicketDAO {
 	
 	@Override
 	public List<Ticket> listByAgent(int id) {
-		Query query = entityManager.createQuery(SELECT_QUERY + " where t.agentId = :id").setParameter("id", id);
-		List<Ticket> tickets = (List<Ticket>) query.getResultList();
+		TypedQuery<Ticket> query = entityManager.createQuery(SELECT_QUERY + " where t.agentId = :id", Ticket.class).setParameter("id", id);
+		List<Ticket> tickets = query.getResultList();
 		return tickets;
 	}
 

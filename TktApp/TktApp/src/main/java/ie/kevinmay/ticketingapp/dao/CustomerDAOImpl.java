@@ -5,6 +5,7 @@ import java.util.List;
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
 import javax.persistence.Query;
+import javax.persistence.TypedQuery;
 
 import org.springframework.stereotype.Repository;
 import org.springframework.transaction.annotation.Transactional;
@@ -57,8 +58,8 @@ public class CustomerDAOImpl implements CustomerDAO {
 	@Transactional
 	public Customer getCustomerByAccount(int accountid) {
 		Customer customer = new Customer();
-		Query query = entityManager.createQuery(SELECT_QUERY);
-		List<Customer> customers = (List<Customer>) query.getResultList();
+		TypedQuery<Customer> query = entityManager.createQuery(SELECT_QUERY, Customer.class);
+		List<Customer> customers = query.getResultList();
 		for (Customer cstmr : customers){
 			if (cstmr.getAccountId() == accountid){
 				customer = cstmr;

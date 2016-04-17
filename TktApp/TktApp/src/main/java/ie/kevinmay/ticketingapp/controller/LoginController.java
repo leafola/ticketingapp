@@ -38,6 +38,12 @@ public class LoginController {
 		}
 		return new ModelAndView("login", "message", message);
 	}
+	
+	@RequestMapping(value = "/accessDenied")
+    public ModelAndView accessDenied() {
+
+          return new ModelAndView("accessDenied", "message", "You've been denied!"); 
+     }
 
 	@RequestMapping(value = "/register", method = RequestMethod.GET)
 	public ModelAndView getRegisterPage(@ModelAttribute Account account,

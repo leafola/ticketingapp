@@ -3,7 +3,6 @@ package ie.kevinmay.ticketingapp.service;
 import java.util.List;
 
 import ie.kevinmay.ticketingapp.model.Agent;
-import ie.kevinmay.ticketingapp.model.Customer;
 
 public interface AgentService {
 	public List<Agent> getAllAgents();

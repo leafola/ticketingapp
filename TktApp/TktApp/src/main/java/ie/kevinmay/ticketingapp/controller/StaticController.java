@@ -18,5 +18,15 @@ public class StaticController {
         return "listTicketsAngular";
     }
 	
+	@RequestMapping(value = "/jasmine", method = RequestMethod.GET)
+    public String getJasminePage() {
+        return "jasmineTest";
+    }
+	
+	@RequestMapping(value = "/index", method = RequestMethod.GET)
+    public String getIndex() {
+        return "index";
+    }
+	
  	
 }

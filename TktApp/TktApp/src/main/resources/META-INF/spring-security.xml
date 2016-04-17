@@ -7,6 +7,7 @@
 		<intercept-url pattern="/web/login" access="permitAll" />
 		<intercept-url pattern="/static/css/**" access="permitAll"/>
 		<intercept-url pattern="/web/register" access="permitAll" />
+		<intercept-url pattern="/web/accessDenied" access="permitAll" />
 		<intercept-url pattern="/web/validateRegistration" access="permitAll" />
 		<intercept-url pattern="/j_spring_security_check" access="permitAll" />
 		<intercept-url pattern="/j_spring_security_logout" access="permitAll" />
@@ -17,7 +18,8 @@
 		<intercept-url pattern="/web/agent/**" access="hasRole('ROLE_ADMIN')" />
 		<intercept-url pattern="/web/super/**" access="hasRole('ROLE_SUPER')" />
 		<intercept-url pattern="/**" access="hasAnyRole('ROLE_USER','ROLE_ADMIN','ROLE_SUPER')" />
-
+		<access-denied-handler error-page="/web/accessDenied"/>
+		
 		<form-login login-processing-url="/j_spring_security_check"
 			login-page="/web/login" authentication-failure-url="/web/login?error"
 			authentication-success-handler-ref="myAuthenticationSuccessHandler"

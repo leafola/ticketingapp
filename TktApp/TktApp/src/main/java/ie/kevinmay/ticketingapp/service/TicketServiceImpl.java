@@ -11,6 +11,7 @@ import javax.ws.rs.Path;
 import javax.ws.rs.PathParam;
 import javax.ws.rs.Produces;
 import javax.ws.rs.core.MediaType;
+import javax.ws.rs.core.Response;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
@@ -114,7 +115,7 @@ public class TicketServiceImpl implements TicketService {
 	@Produces(MediaType.APPLICATION_JSON)
 	@ApiOperation( 
 		    value = "Find Ticket by Agent Username",
-		    notes = "This is where I can add implementation notes",
+		    notes = "This endpoint will return a list of Tickets for a specific agent in JSON form.",
 		    response = Ticket.class, 
 			responseContainer = "List"
 		)
@@ -126,11 +127,12 @@ public class TicketServiceImpl implements TicketService {
 	@Path("/tickets/ticket")
 	@Consumes({MediaType.APPLICATION_JSON})
 	@Override
-	@ApiOperation(value = "Create new Ticket",
-    notes = "This is a test note for Ticket")
-	public void createTicket(Ticket ticket) {
+	@ApiOperation(
+			value = "Create new Ticket",
+			notes = "This is a test note for Ticket")
+	public Response createTicket(Ticket ticket) {
 		ticketDAO.createTicket(ticket);
-		
+		return Response.status(204).type("text/plain").entity("Updated!").build();
 	}
 
 	@PUT
