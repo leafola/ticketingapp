@@ -23,9 +23,9 @@
 		class="org.springframework.jdbc.datasource.DriverManagerDataSource">
 		<property name="driverClassName" value="com.mysql.jdbc.Driver" />
 		<property name="url"
-			value="jdbc:mysql://localhost:3306/ticket_app_database" />
-		<property name="username" value="root" />
-		<property name="password" value="password" />
+			value="jdbc:mysql://danu6.it.nuigalway.ie:3306/mydb2023" />
+		<property name="username" value="mydb2023mk" />
+		<property name="password" value="bo8ten" />
 	</bean>
 
 
