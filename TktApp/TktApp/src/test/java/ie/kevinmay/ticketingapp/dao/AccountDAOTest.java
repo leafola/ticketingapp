@@ -48,4 +48,33 @@ public class AccountDAOTest {
 	        Assert.assertNotNull(account.getRole());
 	        Assert.assertEquals("UnitTestUsername", account.getUsername());
 	    }
+	    
+	    @Test
+	    @Transactional
+	    @Rollback(true)// if set to true any changes to database will be rolled back.
+	    public void testUpdateAccount()
+	    {	
+	    	Account account = new Account();
+	    	account.setId(0);
+	    	account.setUsername("ChangeUnitTestUsername");
+	        account.setPassword("ChangeUnitTestPassword");
+	        account.setRole("ROLE_TEST");
+	    	accountDAO.updateAccount(account);
+	    	account = accountDAO.getAccountByUsername(account.getUsername());
+	    	Assert.assertNotNull(account.getRole());
+	        Assert.assertEquals(0, account.getId());
+	        Assert.assertEquals("ChangeUnitTestUsername", account.getUsername());
+	    }
+	    
+	    @Test
+	    @Transactional
+	    @Rollback(true)// if set to true any changes to database will be rolled back.
+	    public void testGetAccountByUsername()
+	    {	
+	    	Account account = accountDAO.getAccountByUsername("TestAccount");
+	    	Assert.assertNotNull(account.getRole());
+	    	Assert.assertEquals("TestAccount", account.getUsername());
+	    }
+	    
+	    
 }

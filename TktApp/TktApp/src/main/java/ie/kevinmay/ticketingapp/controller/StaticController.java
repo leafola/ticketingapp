@@ -12,21 +12,5 @@ public class StaticController {
 	     
 	      return "redirect:/swagger/index.html";
 	   }
-	
-	@RequestMapping(value = "/tickets", method = RequestMethod.GET)
-    public String getIndexPage() {
-        return "listTicketsAngular";
-    }
-	
-	@RequestMapping(value = "/jasmine", method = RequestMethod.GET)
-    public String getJasminePage() {
-        return "jasmineTest";
-    }
-	
-	@RequestMapping(value = "/index", method = RequestMethod.GET)
-    public String getIndex() {
-        return "index";
-    }
-	
  	
 }
